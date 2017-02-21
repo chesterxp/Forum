@@ -13,6 +13,10 @@
 <!-- Optional theme -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
 
+<!--animation css-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+<!--Custom CSS-->
 <link rel="stylesheet" href="style.css">
 
 	
@@ -21,7 +25,7 @@
 
 <!-------------------------------------nav------------------------------------------->
 <section id="nav">
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -39,6 +43,7 @@
 				<li><a href="#">Oferta</a></li>
 				<li><a href="#">Galeria</a></li>
 				<li><a href="#">Multimedia</a></li>
+				<li><a href="#">Dodatki</a></li>
 				<li><a href="#">Kontakt</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -53,19 +58,22 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+<!--
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
     <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+-->
   </ol>
 
-  <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img src="/img/computer-767781_1920.jpg" alt="...">
-      <div class="carousel-caption">
-        Pierwszy slajd
+      <div class="carousel-caption animated bounceInUp iinfinite">
+        <p>Bal sylwestrowy w Jagodzie</p>
+        <a href="#" class="btn btn-default">Zobacz nasza galerie</a>
       </div>
     </div>
+<!--
     <div class="item">
       <img src="/img/macbook-606763_1920.jpg" alt="...">
       <div class="carousel-caption">
@@ -78,12 +86,15 @@
         trzeci slajd
       </div>
     </div>
+-->
+<!--
       <div class="item">
       <img src="/img/rece577758_1920.jpg" alt="...">
       <div class="carousel-caption">
         czwarty slajd
       </div>
     </div>
+-->
     ...
   </div>
 
@@ -101,42 +112,115 @@
 </section>
 <!-------------------------------------//slider----------------------------------------->
 
+
+
 <!-------------------------------------About US------------------------------------------->
+
 <section id="about">
-	<div class="container-fluid">
-		<div class="row text-center">
-			<div class="col-md-3">
-				<img src="/img/rece577758_1920.jpg" alt="" class="img-circle">
-				<h2>Aneta</h2>
-				<p>Wokal</p>
-			</div>
-			<div class="col-md-3">
-				<img src="/img/rece577758_1920.jpg" alt="" class="img-circle" >
-			</div>
-			<div class="col-md-3">
-				<img src="/img/rece577758_1920.jpg" alt="" class="img-circle" >
-			</div>
-			<div class="col-md-3">
-				<img src="/img/rece577758_1920.jpg" alt="" class="img-circle" >
-			</div>
-		</div>
-	</div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Troche o Nas</h1>
+        <hr>
+        <p>Zespół FORUM swoją działalność rozpoczął w 1993 roku, natomiast od roku 1999 gramy w składzie:</p>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+
+
+        <p>Opierając się na naszym wieloletnim doświadczeniu oraz na opiniach zadowolonych par młodych, ich gości, a także uczestników innych imprez możemy stwierdzić, że zespół FORUM dzięki swojemu bogatemu repertuarowi potrafi zamienić każdą organizowaną przez Państwa imprezę w niezapomniane przeżycie. Może to być zarówno wesele jak również bal karnawałowy, studniówka czy też impreza plenerowa. Repertuar zespołu stanowią światowe standardy z lat 70-tych, 80-tych i 90-tych jak i piosenki z najnowszych list przebojów.</p>
+        <p>Niewątpliwą zaletą naszego zespołu jest to, że na przyjęciach weselnych, na których jesteśmy obecni zapewniamy Państwu i Państwa gościom udział w ciekawej, lecz powoli odchodzącej w zapomnienie części przyjęcia weselnego jakim jest typowa, staropolska biesiada. Polega to na tym, że goście weselni mają możliwość śpiewania razem z nami piosenek ludowych, przy muzyce granej na instrumentach akustycznych. Czas trwania takiej biesiady uzależniony jest od organizatorów. Zazwyczaj trwa to około 30 minut.</p>
+
+        <p>Ciekawym, staropolskim zwyczajem związanym z weselem są oczepiny. Wyzwaniem dla każdego zespołu jest zapewnienie takiego programu oczepin, aby zarówno Para Młoda jak i goście weselni dobrze się bawili. Prowadząc tą formę zabawy zespół FORUM odpowiednio wcześniej konsultuje jej przebieg z Nowożeńcami dzięki czemu wszyscy są zadowoleni.</p>
+
+        <p>Nasz zespół dysponuje nowoczesnym nagłośnieniem i sprzętem wyprodukowanym przez firmy o wysokiej pozycji na rynku muzycznym.</p>
+
+      </div>
+    </div>
+  </div>
 </section>
+
 <!-------------------------------------//About US----------------------------------------->
 
 <!-------------------------------------Team------------------------------------------->
+<section id="team">
+	<div class="container-fluid">
+        <div class="row">
+        <h1>Nasz Skład</h1>
+        <hr>
+      <div class="col-md-3">
+        <img src="/img/rece577758_1920.jpg" alt="" class="img-circle">
+        <h2>Aneta</h2>
+        <p>Wokal</p>
+      </div>
+      <div class="col-md-3">
+        <img src="/img/rece577758_1920.jpg" alt="" class="img-circle">
+        <h2>Adam</h2>
+        <p>Boss</p>
+      </div>
+      <div class="col-md-3">
+        <img src="/img/rece577758_1920.jpg" alt="" class="img-circle">
+        <h2>Adam</h2>
+        <p>Gitara</p>
+      </div>
+      <div class="col-md-3">
+        <img src="/img/rece577758_1920.jpg" alt="" class="img-circle">
+         <h2>Grzegorz</h2>
+        <p>Perkusja</p>
+      </div>
+    </div>
+	</div>
+</section>
 <!-------------------------------------//Team----------------------------------------->
 
-<!-------------------------------------offer------------------------------------------->
-<!-------------------------------------//offer----------------------------------------->
 
-<!-------------------------------------nav------------------------------------------->
-<!-------------------------------------//nav----------------------------------------->
+
+<!-------------------------------------offer------------------------------------------->
+<section id="offer">
+  <div class="container-fluid">
+    <div class="row">
+     <h1>Nasza oferta</h1>
+     <hr>
+      <div class="col-md-3">
+       <h2>Imprezy okolicznościowe</h2>
+       <hr>
+        <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
+      </div>
+      
+      <div class="col-md-3">
+       <h2>Przyjęcia weselne</h2>
+       <hr>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      </div>
+      
+      <div class="col-md-3">
+       <h2>Sylwester</h2>
+       <hr>
+        <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
+      </div>
+      
+      <div class="col-md-3">
+       <h2>Imprezy plenerowe</h2>
+       <hr>
+        <span class="glyphicon glyphicon-music" aria-hidden="true"></span>
+      </div>
+      
+      
+      
+      
+    </div>
+  </div>
+</section>
+<!-------------------------------------//offer----------------------------------------->
 
 <!-------------------------------------Gallery------------------------------------------->
 <!-------------------------------------//Gallery----------------------------------------->
 
 <!-------------------------------------Audio------------------------------------------->
+
 <!-------------------------------------//Audio----------------------------------------->
 
 <!-------------------------------------Contact------------------------------------------->
