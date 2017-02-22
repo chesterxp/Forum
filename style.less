@@ -1,5 +1,8 @@
 body{
-  
+	h1{
+		font-size: 70px;
+		text-transform: uppercase;
+	}
 }
 
 //<!-------------------------------------nav------------------------------------------->
@@ -20,9 +23,9 @@ body{
 
 //<!-------------------------------------slider------------------------------------------->
 #slider{
-	margin: 0;
-  padding: 0;
+	
 	.carousel-inner{
+		
     
     img{
       width: 100%;
@@ -36,7 +39,7 @@ body{
       }
       text-shadow: 0 0 15px black;
       position: absolute;
-      top: 70%;
+      top: 60%;
       animation-duration: 2s;
       
       a{
@@ -58,20 +61,93 @@ body{
   font-size: 20px;
   line-height: 40px;
   color: black;
-  padding: 200px;
+  padding: 100px 150px;
+
 }
 
 //<!-------------------------------------//About US----------------------------------------->
 
 //<!-------------------------------------Team------------------------------------------->
 #team{
-	 padding: 200px;
+	padding: 100px 150px;
   text-align: center;
-	img{
+	
+	.row{
 		
-    width: 50%;
-    
 	}
+	
+	.aneta{
+		background: url('http://www.cosmopolitan.pl/u/ic/W1/u/a/17/01/6-cech-ktore-maja-inteligentne-osoby-sprawdz-czy-je-masz_5878fc50.jpeg');
+		background-size: cover;
+		background-position: center;
+	
+	}
+	
+	.adam{
+		background: url('https://i0.wp.com/www.le-mirage.pl/wp-content/uploads/2014/02/zabiegi-dla-meszczyzn.jpg?w=900');
+		background-size: cover;
+		background-position: center;
+	
+	}
+		.adam2{
+		background: url('https://thumbs.dreamstime.com/z/mieszny-szalony-mczyzna-mieszajcy-twarz-biegowy-latynos-31848296.jpg');
+		background-size: cover;
+		background-position: center;
+	
+	}
+	
+		.grzesiek{
+		background: url('http://bi.gazeta.pl/im/7/7987/z7987027Q,Grzeczny-playboy----.jpg');
+		background-size: cover;
+		background-position: center;
+	
+	}
+	
+	
+	
+	.okno{
+		box-shadow: 0 0 40px black;
+		width: 400px;
+		height: 400px;
+		margin-left: auto;
+		margin-right: auto;
+		
+		
+		p{
+			width: 400px;
+			height: 400px;
+     	padding: 10px 20px;
+			margin: 0;
+			background: #000000;
+			opacity: 0;
+			display: table-cell;
+			vertical-align: middle;
+			font-weight: bold;
+			font-size: 20px;
+      
+		}
+		
+		&:hover{
+			
+			p{
+				transition: opacity 0.7s;
+				opacity: 0.8;
+			}	
+		}	
+	}
+	
+	.napis{
+		margin: 20px;
+		font-size: 20px;
+		letter-spacing: 3px;
+		text-shadow: 0 0 20px black, 0 0 30px red; 
+		text-transform: uppercase;
+	}
+	
+	.thumbnail{
+		box-shadow: 0 0 40px black;
+	}
+	
 }
 //<!-------------------------------------//Team----------------------------------------->
 
@@ -80,28 +156,164 @@ body{
   text-align: center;
   background: #f7ebeb;
   color:black;
-  padding: 200px;
-  h2{
-    font-size: 30px;
-  }
+  padding: 100px 150px;
+	margin-left: auto;
+	margin-right: auto;
   
-  span{
-    font-size: 50px;
-  }
+	img{
+		width: 70%;
+		height: auto;
+		padding: 30px 60px;	
+		margin-bottom: 20px;
+		
+	}
+	
+	
 }
 //<!-------------------------------------//offer----------------------------------------->
 
-//<!-------------------------------------nav------------------------------------------->
-//<!-------------------------------------//nav----------------------------------------->
-
 //<!-------------------------------------Gallery------------------------------------------->
+#gallery{
+	
+	text-align: center;
+	
+	.row{
+		margin-top: 100px;
+		.col-md-4{
+			margin: 0;
+			padding: 0;
+		}
+	}
+	
+	img{
+		width: 100%;
+		max-height: 400px;
+		display: inline-block;
+		transform: scale(1, 1);
+		transition-timing-function: ease-out;
+		transition-duration: 250ms;
+		-webkit-transform: scale(1, 1);
+		-webkit-transition-timing-function: ease-out;
+		-webkit-transition-duration: 250ms;
+		-moz-transform: scale(1, 1);
+		-moz-transition-timing-function: ease-out;
+		-moz-transition-duration: 250ms;
+		
+		&:hover {
+		transform: scale(1.1, 1.12);
+		transition-timing-function: ease-out;
+		transition-duration: 250ms;
+		-webkit-transform: scale(1.1, 1.12);
+		-webkit-transition-timing-function: ease-out;
+		-webkit-transition-duration: 250ms;
+		-moz-transform: scale(1.1, 1.12);
+		-moz-transition-timing-function: ease-out;
+		-moz-transition-duration: 250ms;
+		position: relative;
+		z-index: 99;
+		
+	}
+}
+}
 //<!-------------------------------------//Gallery----------------------------------------->
 
 //<!-------------------------------------Audio------------------------------------------->
+#audio{
+	text-align: center;
+	padding: 100px 0;
+	
+	p{
+		font-size: 20px;	
+	}
+	
+	audio{
+		width: 30%;
+		display: inline-block;
+		height: 50px;
+	}
+}
 //<!-------------------------------------//Audio----------------------------------------->
 
 //<!-------------------------------------Contact------------------------------------------->
+#contact{
+	
+	.row{
+	text-align: center;
+  background: #f7ebeb;
+  color:black;
+  padding: 100px 150px;
+	font-size: 20px;
+	
+		a{
+			background:#2b64a7;
+			text-decoration: none;
+			display: inline-block;
+			color: white;
+			
+			&:hover{
+				
+				background:#1a42a5;
+			}
+		}
+	}
+	
+}
+
 //<!-------------------------------------//Contact----------------------------------------->
 
 //<!-------------------------------------Footer------------------------------------------->
+#footer{
+	
+	.row{
+	text-align: center;
+	padding: 5px 0;
+	
+	}
+	
+}
 //<!-------------------------------------//Footer----------------------------------------->
+
+//<!-------------------------------------Others------------------------------------------->
+
+.line{
+	width: 40%;
+	padding-bottom: 50px;
+}
+//<!-------------------------------------//Others----------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

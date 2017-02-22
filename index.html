@@ -18,6 +18,10 @@
 
 <!--Custom CSS-->
 <link rel="stylesheet" href="style.css">
+	
+<!--	nice fonts-->
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	
 
 	
 </head>
@@ -38,13 +42,12 @@
 		</div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-				<li><a href="#">O Nas</a></li>
-				<li><a href="#">Skład</a></li>
-				<li><a href="#">Oferta</a></li>
-				<li><a href="#">Galeria</a></li>
-				<li><a href="#">Multimedia</a></li>
-				<li><a href="#">Dodatki</a></li>
-				<li><a href="#">Kontakt</a></li>
+				<li><a href="#about">O Nas</a></li>
+				<li><a href="#team">Skład</a></li>
+				<li><a href="#offer">Oferta</a></li>
+				<li><a href="#gallery">Galeria</a></li>
+				<li><a href="#audio">Multimedia</a></li>
+				<li><a href="#contact">Kontakt</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -67,7 +70,7 @@
 
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="/img/computer-767781_1920.jpg" alt="...">
+      <img src="/img/15826484_1422198414457277_7192256557386571983_n.jpg" alt="...">
       <div class="carousel-caption animated bounceInUp iinfinite">
         <p>Bal sylwestrowy w Jagodzie</p>
         <a href="#" class="btn btn-default">Zobacz nasza galerie</a>
@@ -95,7 +98,6 @@
       </div>
     </div>
 -->
-    ...
   </div>
 
   <!-- Controls -->
@@ -121,16 +123,8 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Troche o Nas</h1>
-        <hr>
-        <p>Zespół FORUM swoją działalność rozpoczął w 1993 roku, natomiast od roku 1999 gramy w składzie:</p>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-
-    <div class="row">
-      <div class="col-md-12">
-
-
+        <hr class="line">
+        <p>Zespół FORUM swoją działalność rozpoczął w 1993 roku.</p>
         <p>Opierając się na naszym wieloletnim doświadczeniu oraz na opiniach zadowolonych par młodych, ich gości, a także uczestników innych imprez możemy stwierdzić, że zespół FORUM dzięki swojemu bogatemu repertuarowi potrafi zamienić każdą organizowaną przez Państwa imprezę w niezapomniane przeżycie. Może to być zarówno wesele jak również bal karnawałowy, studniówka czy też impreza plenerowa. Repertuar zespołu stanowią światowe standardy z lat 70-tych, 80-tych i 90-tych jak i piosenki z najnowszych list przebojów.</p>
         <p>Niewątpliwą zaletą naszego zespołu jest to, że na przyjęciach weselnych, na których jesteśmy obecni zapewniamy Państwu i Państwa gościom udział w ciekawej, lecz powoli odchodzącej w zapomnienie części przyjęcia weselnego jakim jest typowa, staropolska biesiada. Polega to na tym, że goście weselni mają możliwość śpiewania razem z nami piosenek ludowych, przy muzyce granej na instrumentach akustycznych. Czas trwania takiej biesiady uzależniony jest od organizatorów. Zazwyczaj trwa to około 30 minut.</p>
 
@@ -148,31 +142,38 @@
 <!-------------------------------------Team------------------------------------------->
 <section id="team">
 	<div class="container-fluid">
-        <div class="row">
-        <h1>Nasz Skład</h1>
-        <hr>
-      <div class="col-md-3">
-        <img src="/img/rece577758_1920.jpg" alt="" class="img-circle">
-        <h2>Aneta</h2>
-        <p>Wokal</p>
-      </div>
-      <div class="col-md-3">
-        <img src="/img/rece577758_1920.jpg" alt="" class="img-circle">
-        <h2>Adam</h2>
-        <p>Boss</p>
-      </div>
-      <div class="col-md-3">
-        <img src="/img/rece577758_1920.jpg" alt="" class="img-circle">
-        <h2>Adam</h2>
-        <p>Gitara</p>
-      </div>
-      <div class="col-md-3">
-        <img src="/img/rece577758_1920.jpg" alt="" class="img-circle">
-         <h2>Grzegorz</h2>
-        <p>Perkusja</p>
-      </div>
-    </div>
-	</div>
+		<div class="row">
+			<h1>Nasz Skład</h1>
+			<hr class="line">
+			<div class="col-md-3">
+				<div class="okno aneta">
+					<p>Wokalista zespołu</p>
+					<p><a href="#" class="btn btn-default">Kontakt</a></p>
+				</div>
+				<p class="napis ">Aneta</p>
+			</div>
+			
+			<div class="col-md-3">
+				<div class="okno adam">
+					<p>Wokalista zespołu <br> <br>
+					BOSS</p>
+				</div>
+				<p class="napis">Adam</p>
+			</div>
+			
+			<div class="col-md-3">
+				<div class="okno adam2">
+					<p>Gitarzysta<br><br></p>
+				</div>
+				<p class="napis">Adam</p>
+			</div>
+			
+			<div class="col-md-3">
+				<div class="okno grzesiek">
+					<p>Parkusista <br> <br></p>
+				</div>
+				<p class="napis">Grzegorz</p>
+			</div>
 </section>
 <!-------------------------------------//Team----------------------------------------->
 
@@ -180,58 +181,141 @@
 
 <!-------------------------------------offer------------------------------------------->
 <section id="offer">
-  <div class="container-fluid">
-    <div class="row">
-     <h1>Nasza oferta</h1>
-     <hr>
-      <div class="col-md-3">
-       <h2>Imprezy okolicznościowe</h2>
-       <hr>
-        <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
-      </div>
-      
-      <div class="col-md-3">
-       <h2>Przyjęcia weselne</h2>
-       <hr>
-        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-      </div>
-      
-      <div class="col-md-3">
-       <h2>Sylwester</h2>
-       <hr>
-        <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
-      </div>
-      
-      <div class="col-md-3">
-       <h2>Imprezy plenerowe</h2>
-       <hr>
-        <span class="glyphicon glyphicon-music" aria-hidden="true"></span>
-      </div>
-      
-      
-      
-      
-    </div>
-  </div>
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Nasza oferta</h1>
+			<hr class="line">
+			<div class="col-md-3 ikonki">
+				<h3>Imprezy okolicznościowe</h3>
+				<img src="img/party2.png" alt="">
+			</div>
+
+			<div class="col-md-3 ikonki">
+				<h3>Wesela</h3>
+				<img src="img/wedding.png" alt="">
+			</div>
+			
+			<div class="col-md-3 ikonki">
+				<h3>Sylwester</h3>
+				<img src="img/happy_new_year.png" alt="">
+			</div>
+			
+			<div class="col-md-3 ikonki">
+				<h3>Imprezy plenerowe</h3>
+				<img src="img/party.png" alt="">
+			</div>
+		</div>
 </section>
 <!-------------------------------------//offer----------------------------------------->
 
 <!-------------------------------------Gallery------------------------------------------->
+<section id="gallery">
+<div class="container-fluid">
+	<div class="row">
+	<h1>Galeria</h1>
+			<hr class="line">
+		<div class="col-md-4">
+			<img src="/img/11393135_1428998107423246_2761154735002578142_n.jpg" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/15800527_1422196551124130_2130878196306101214_o.jpg" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/15826484_1422198414457277_7192256557386571983_n.jpg" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/DSC_3583.JPG" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/DSC_3695.JPG" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/DSC_3737.JPG" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/DSC_3760.JPG" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/DSC_1907.JPG" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/15826484_1422198414457277_7192256557386571983_n.jpg" alt="">
+		</div>
+		
+	</div>
+</div>
+</section>
 <!-------------------------------------//Gallery----------------------------------------->
 
 <!-------------------------------------Audio------------------------------------------->
+<section id="audio">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Multimedia</h1>
+			<hr class="line">
+			<div class="vol-md-12">
+				<p>Adam - "Szaleje za Tobą"</p>
+				<audio src="audio/Track%2003.mp3" controls></audio>
+				<p>Adam - "Szaleje za Tobą"</p>
+				<audio src="audio/Track%2003.mp3" controls></audio>
+				<p>Adam - "Szaleje za Tobą"</p>
+				<audio src="audio/Track%2003.mp3" controls></audio>
+				<p>Adam - "Szaleje za Tobą"</p>
+				<audio src="audio/Track%2003.mp3" controls></audio>
+			</div>
+		</div>
+	</div>
+</section>
 
 <!-------------------------------------//Audio----------------------------------------->
 
 <!-------------------------------------Contact------------------------------------------->
+<section id="contact">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Kontakt</h1>
+				<hr class="line">
+				<p>ADAM BOCHAJ</p>
+				<p>602 852 867 </p>
+				<p>(25) 781 00 56</p>
+				<p>Lub napisz do Nas</p>
+				<p>adamforum@wp.pl</p>
+				<p>adamforum@poczta.onet.pl</p>
+				<a href="#">
+					<i class="ion-social-facebook btn btn-lg"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
 <!-------------------------------------//Contact----------------------------------------->
 
 <!-------------------------------------Footer------------------------------------------->
+
+<section id="footer">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<p>Forum - Zespół Weselny &copy; 2017</p>
+			</div>
+		</div>
+	</div>
+</section>
 <!-------------------------------------//Footer----------------------------------------->
 
 
 <script src="https://cdn.jsdelivr.net/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="custom.js"></script>
   
 
 </body>
