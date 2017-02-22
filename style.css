@@ -64,14 +64,14 @@ body h1 {
 }
 #team .okno {
   box-shadow: 0 0 40px black;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   margin-left: auto;
   margin-right: auto;
 }
 #team .okno p {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   padding: 10px 20px;
   margin: 0;
   background: #000000;
@@ -181,4 +181,51 @@ body h1 {
 .line {
   width: 40%;
   padding-bottom: 50px;
+}
+.hidee {
+  opacity: 0;
+}
+.showw {
+  opacity: 1;
+}
+.con3b {
+  position: relative;
+  width: 100%;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #0b0b0b;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+.con3b:hover .overlay {
+  height: 100%;
+  opacity: 0.8;
+}
+.text {
+  white-space: nowrap;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.text a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
 }
