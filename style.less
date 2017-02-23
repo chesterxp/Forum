@@ -1,122 +1,111 @@
-body{
-	h1{
+body {
+	background: #171616;
+	font-family: 'Lato', sans-serif;
+	h1 {
 		font-size: 70px;
 		text-transform: uppercase;
 	}
 }
 
 //<!-------------------------------------nav------------------------------------------->
-#nav{
-  .navbar{
-    font-size:20px;
-    text-transform: uppercase;
-    opacity: 0.7;
-    box-shadow: 0 0 10px white;
-    .navbar-header, .nav{
-      padding: 15px 20px;
-      color:white;
-    } 
-  }
+#nav {
+	.navbar {
+		font-size: 20px;
+		text-transform: uppercase;
+		opacity: 0.7;
+		box-shadow: 0 0 10px white;
+		.navbar-header,
+		.nav {
+			padding: 15px 20px;
+			color: white;
+		}
+	}
 }
 
 //<!-------------------------------------//nav----------------------------------------->
-
 //<!-------------------------------------slider------------------------------------------->
-#slider{
-	
-	.carousel-inner{
-		
-    
-    img{
-      width: 100%;
-	    height: 900px;
-      background-size: cover;
-    } 
-    .carousel-caption{
-      font-size: 70px;
-      p,a{
-        
-      }
-      text-shadow: 0 0 15px black;
-      position: absolute;
-      top: 60%;
-      animation-duration: 2s;
-      
-      a{
-        opacity: 0.6;
-        font-size: 30px;
-      }
-      
-		  
-    }
+#slider {
+	.carousel-inner {
+		img {
+			width: 100%;
+			height: 900px;
+			background-size: cover;
+		}
+		.carousel-caption {
+			font-size: 70px;
+			p,
+			a {}
+			text-shadow: 0 0 15px black;
+			position: absolute;
+			top: 60%;
+			animation-duration: 2s;
+			a {
+				opacity: 0.6;
+				font-size: 30px;
+			}
+		}
 	}
-	
 }
+
 //<!-------------------------------------//slider----------------------------------------->
-
 //<!-------------------------------------About US------------------------------------------->
-#about{
-  text-align: center;
-  background: #f7ebeb;
-  font-size: 20px;
-  line-height: 40px;
-  color: black;
-  padding: 100px 150px;
-
+#about {
+	text-align: center;
+	background: #f7ebeb;
+	font-size: 20px;
+	line-height: 40px;
+	color: black;
+	padding: 200px 100px;
 }
 
 //<!-------------------------------------//About US----------------------------------------->
-
 //<!-------------------------------------Team------------------------------------------->
-#team{
-	padding: 100px 150px;
-  text-align: center;
-	
-	.row{
-		
+#team {
+	padding: 200px 100px;
+	text-align: center;
+	background: url(img/music4.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	hr {
+		border: 3px solid white;
 	}
-	
-	.aneta{
+	.row {
+		h1 {
+			//			color: black;
+			//			text-shadow: 0 0 20px white;
+			//			font-weight: bold;
+		}
+	}
+	.aneta {
 		background: url('http://www.cosmopolitan.pl/u/ic/W1/u/a/17/01/6-cech-ktore-maja-inteligentne-osoby-sprawdz-czy-je-masz_5878fc50.jpeg');
 		background-size: cover;
 		background-position: center;
-	
 	}
-	
-	.adam{
+	.adam {
 		background: url('https://i0.wp.com/www.le-mirage.pl/wp-content/uploads/2014/02/zabiegi-dla-meszczyzn.jpg?w=900');
 		background-size: cover;
 		background-position: center;
-	
 	}
-		.adam2{
+	.adam2 {
 		background: url('https://thumbs.dreamstime.com/z/mieszny-szalony-mczyzna-mieszajcy-twarz-biegowy-latynos-31848296.jpg');
 		background-size: cover;
 		background-position: center;
-	
 	}
-	
-		.grzesiek{
+	.grzesiek {
 		background: url('http://bi.gazeta.pl/im/7/7987/z7987027Q,Grzeczny-playboy----.jpg');
 		background-size: cover;
 		background-position: center;
-	
 	}
-	
-	
-	
-	.okno{
+	.okno {
 		box-shadow: 0 0 40px black;
 		width: 350px;
 		height: 350px;
 		margin-left: auto;
 		margin-right: auto;
-		
-		
-		p{
+		p {
 			width: 350px;
 			height: 350px;
-     	padding: 10px 20px;
+			padding: 10px 20px;
 			margin: 0;
 			background: #000000;
 			opacity: 0;
@@ -124,68 +113,58 @@ body{
 			vertical-align: middle;
 			font-weight: bold;
 			font-size: 20px;
-      
 		}
-		
-		&:hover{
-			
-			p{
+		&:hover {
+			p {
 				transition: opacity 0.7s;
 				opacity: 0.8;
-			}	
-		}	
+			}
+		}
 	}
-	
-	.napis{
+	.napis {
 		margin: 20px;
-		font-size: 20px;
+		font-size: 26px;
 		letter-spacing: 3px;
-		text-shadow: 0 0 20px black, 0 0 30px red; 
+		text-shadow: 0 0 20px black, 0 0 30px red;
 		text-transform: uppercase;
 	}
-	
-	.thumbnail{
-		box-shadow: 0 0 40px black;
-	}
-	
 }
-//<!-------------------------------------//Team----------------------------------------->
 
+//<!-------------------------------------//Team----------------------------------------->
 //<!-------------------------------------offer------------------------------------------->
-#offer{
-  text-align: center;
-  background: #f7ebeb;
-  color:black;
-  padding: 100px 150px;
+#offer {
+	text-align: center;
+	background: #f7ebeb;
+	color: black;
+	padding: 200px 100px;
 	margin-left: auto;
 	margin-right: auto;
-  
-	img{
+	img {
 		width: 70%;
 		height: auto;
-		padding: 30px 60px;	
-		margin-bottom: 20px;
+		padding: 30px 60px;
 		
 	}
-	
-	
+	h3{
+		font-size: 30px;
+	}
 }
-//<!-------------------------------------//offer----------------------------------------->
 
+//<!-------------------------------------//offer----------------------------------------->
 //<!-------------------------------------Gallery------------------------------------------->
-#gallery{
-	
+#gallery {
 	text-align: center;
-	
-	.row{
+	hr {
+		border: 3px solid white;
+	}
+	.row {
 		margin-top: 100px;
-		.col-md-4{
+		.col-md-4 {
 			margin: 0;
 			padding: 0;
 		}
 	}
-	
-	img{
+	img {
 		width: 100%;
 		max-height: 400px;
 		display: inline-block;
@@ -198,177 +177,85 @@ body{
 		-moz-transform: scale(1, 1);
 		-moz-transition-timing-function: ease-out;
 		-moz-transition-duration: 250ms;
-		
 		&:hover {
-		transform: scale(1.1, 1.12);
-		transition-timing-function: ease-out;
-		transition-duration: 250ms;
-		-webkit-transform: scale(1.1, 1.12);
-		-webkit-transition-timing-function: ease-out;
-		-webkit-transition-duration: 250ms;
-		-moz-transform: scale(1.1, 1.12);
-		-moz-transition-timing-function: ease-out;
-		-moz-transition-duration: 250ms;
-		position: relative;
-		z-index: 99;
-		
+			transform: scale(1.1, 1.12);
+			transition-timing-function: ease-out;
+			transition-duration: 250ms;
+			-webkit-transform: scale(1.1, 1.12);
+			-webkit-transition-timing-function: ease-out;
+			-webkit-transition-duration: 250ms;
+			-moz-transform: scale(1.1, 1.12);
+			-moz-transition-timing-function: ease-out;
+			-moz-transition-duration: 250ms;
+			position: relative;
+			z-index: 99;
+		}
 	}
 }
-}
-//<!-------------------------------------//Gallery----------------------------------------->
 
+//<!-------------------------------------//Gallery----------------------------------------->
 //<!-------------------------------------Audio------------------------------------------->
-#audio{
+#audio {
 	text-align: center;
-	padding: 100px 0;
-	
-	p{
-		font-size: 20px;	
+	padding: 200px 50px;
+	hr {
+		border: 3px solid white;
 	}
-	
-	audio{
+	p {
+		font-size: 20px;
+	}
+	audio {
 		width: 30%;
 		display: inline-block;
 		height: 50px;
 	}
 }
-//<!-------------------------------------//Audio----------------------------------------->
 
+//<!-------------------------------------//Audio----------------------------------------->
 //<!-------------------------------------Contact------------------------------------------->
-#contact{
-	
-	.row{
-	text-align: center;
-  background: #f7ebeb;
-  color:black;
-  padding: 100px 150px;
-	font-size: 20px;
-	
-		a{
-			background:#2b64a7;
+#contact {
+	background: url(img/music1.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	.row {
+		text-align: center;
+		color: black;
+		padding: 200px 100px;
+		font-size: 20px;
+		a {
+			background: #2b64a7;
 			text-decoration: none;
 			display: inline-block;
 			color: white;
-			
-			&:hover{
-				
-				background:#1a42a5;
+			&:hover {
+				background: #1a42a5;
 			}
 		}
 	}
-	
 }
 
 //<!-------------------------------------//Contact----------------------------------------->
-
 //<!-------------------------------------Footer------------------------------------------->
-#footer{
-	
-	.row{
+#footer {
+	padding: 10px auto;
 	text-align: center;
-	padding: 5px 0;
-	
-	}
-	
 }
+
 //<!-------------------------------------//Footer----------------------------------------->
-
 //<!-------------------------------------Others------------------------------------------->
-
-.line{
+.line {
 	width: 40%;
-	padding-bottom: 50px;
+	margin-bottom: 100px;
+	border: 3px solid black;
 }
 
 //viewportchecker
-
-.hidee{
-	opacity:0
+.hidee {
+	opacity: 0
 }
- 
+
 .showw {
 	opacity: 1;
 }
+
 //<!-------------------------------------//Others----------------------------------------->
-.con3b {
-  position: relative;
-  width: 100%;
-}
-
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #0b0b0b;
-  overflow: hidden;
-  width: 100%;
-  height: 0;
-  transition: .5s ease;
-}
-
-.con3b:hover .overlay {
-  height: 100%;
-  opacity: 0.8;
-}
-
-.text {
-  white-space: nowrap; 
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-  
-  a{
-    text-decoration: none;
-    color: white;
-    text-align: center;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//------------------------------------//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

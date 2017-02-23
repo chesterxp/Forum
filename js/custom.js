@@ -7,5 +7,13 @@ $(document).ready(function(){
         offset: '30%'
       });
     });
+	
+		$('a').smoothScroll({
+		offset:10,
+		speed:600,
+  
+  
+    });
+	
  
 	});
