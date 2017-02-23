@@ -1,28 +1,13 @@
 $(document).ready(function(){
- 
-		$('*[data-animate]').addClass('hidee').each(function(){
-      $(this).viewportChecker({
-        classToAdd: 'showw animated ' + $(this).data('animate'),
-        classToRemove: 'hidee',
-        offset: '30%'
-      });
-    });
-	
-		$('a').smoothScroll({
-		offset:10,
-		speed:600,
-  
-  
-    });
-  
-  new jPlayerPlaylist({
+
+	new jPlayerPlaylist({
 		jPlayer: "#jquery_jplayer_1",
 		cssSelectorAncestor: "#jp_container_1"
 	}, [
 		{
-			title:"ona tańczy dla mnie",
-			mp3:"audio/Track%2003.mp3",
-			oga:"audio/Track%2003.mp3"
+			title:"Cro Magnon Man",
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg"
 		},
 		{
 			title:"Your Face",
@@ -96,6 +81,5 @@ $(document).ready(function(){
 		smoothPlayBar: true,
 		keyEnabled: true
 	});
-	
- 
-	});
+});
+//]]>

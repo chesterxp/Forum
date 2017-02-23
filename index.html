@@ -17,6 +17,10 @@
 
 <!--Custom CSS-->
 <link rel="stylesheet" href="style.css">
+
+<!--audio-->
+<link rel="stylesheet" href="jplayer.blue.monday.min.css">
+
 	
 <!--	nice icon-->
 <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -45,9 +49,9 @@
       <ul class="nav navbar-nav navbar-right">
 				<li><a href="#about">O Nas</a></li>
 				<li><a href="#team">Skład</a></li>
-				<li><a href="#offer">Oferta</a></li>
 				<li><a href="#gallery">Galeria</a></li>
 				<li><a href="#audio">Multimedia</a></li>
+				<li><a href="#offer">Oferta</a></li>
 				<li><a href="#contact">Kontakt</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -71,10 +75,10 @@
 
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="/img/15826484_1422198414457277_7192256557386571983_n.jpg" alt="...">
+      <img src="/img/music1.jpg" alt="...">
       <div class="carousel-caption animated bounceInUp iinfinite">
         <p>Bal sylwestrowy w Jagodzie</p>
-        <a href="#" class="btn btn-default">Zobacz nasza galerie</a>
+<!--        <a href="#" class="btn btn-default">Zobacz nasza galerie</a>-->
       </div>
     </div>
 <!--
@@ -121,9 +125,9 @@
 
 <section id="about" >
   <div class="container-fluid">
-    <div class="row">
+    <div class="row" data-animate="fadeIn">
       <div class="col-md-12">
-        <h1 data-animate="bounceIn">Troche o Nas</h1>
+        <h1 data-animate="fadeInUp">Troche o Nas</h1>
         <hr class="line">
         <p>Zespół FORUM swoją działalność rozpoczął w 1993 roku.</p>
         <p>Opierając się na naszym wieloletnim doświadczeniu oraz na opiniach zadowolonych par młodych, ich gości, a także uczestników innych imprez możemy stwierdzić, że zespół FORUM dzięki swojemu bogatemu repertuarowi potrafi zamienić każdą organizowaną przez Państwa imprezę w niezapomniane przeżycie. Może to być zarówno wesele jak również bal karnawałowy, studniówka czy też impreza plenerowa. Repertuar zespołu stanowią światowe standardy z lat 70-tych, 80-tych i 90-tych jak i piosenki z najnowszych list przebojów.</p>
@@ -141,35 +145,40 @@
 <!-------------------------------------Team------------------------------------------->
 <section id="team" >
 	<div class="container-fluid">
-		<div class="row">
-			<h1 data-animate="fadeIn">Nasz Skład</h1>
+		<div class="row" data-animate="fadeIn">
+			<h1 data-animate="fadeInUp">Nasz Skład</h1>
 			<hr class="line">
         <div class="col-md-3"  data-animate="bounceInDown">
          	<div class="okno aneta">
-					<p>Wokalista zespołu <br><br>
-					</p>
+            <p>Wokalista<br><br>
+					<a href="#contact">Kontakt</a></p>
+					
 				</div>
 				<p class="napis">Aneta</p>
+       
         </div>
 			
 			<div class="col-md-3" data-animate="bounceInLeft">
 				<div class="okno adam">
-					<p>Wokalista zespołu <br> <br>
-					BOSS</p>
+					<p>Wokalista <br> <br>
+					<span>BOSS</span><br><br>
+					<a href="#contact">Kontakt</a></p>
 				</div>
 				<p class="napis">Adam</p>
 			</div>
 			
 			<div class="col-md-3" data-animate="bounceInRight">
 				<div class="okno adam2">
-					<p>Gitarzysta<br><br></p>
+					<p>Gitarzysta<br><br>
+					<a href="#contact">Kontakt</a></p>
 				</div>
 				<p class="napis">Adam</p>
 			</div>
 			
 			<div class="col-md-3" data-animate="bounceInUp">
 				<div class="okno grzesiek">
-					<p>Parkusista <br> <br></p>
+					<p>Parkusista <br><br>
+					<a href="#contact">Kontakt</a></p>
 				</div>
 				<p class="napis">Grzegorz</p>
 			</div>
@@ -178,75 +187,68 @@
 
 
 
-<!-------------------------------------offer------------------------------------------->
-<section id="offer">
-	<div class="container-fluid">
-		<div class="row">
-			<h1 data-animate="bounceIn">Nasza oferta</h1>
-			<hr class="line">
-			<div class="col-md-3 ikonki">
-				<h3 data-animate="fadeInRightBig">Imprezy okolicznościowe</h3>
-				<img src="img/party2.png" alt="">
-			</div>
 
-			<div class="col-md-3 ikonki">
-				<h3 data-animate="fadeInDownBig">Wesela</h3>
-				<img src="img/wedding.png" alt="">
-			</div>
-			
-			<div class="col-md-3 ikonki">
-				<h3 data-animate="fadeInUpBig">Sylwester</h3>
-				<img src="img/happy_new_year.png" alt="">
-			</div>
-			
-			<div class="col-md-3 ikonki">
-				<h3 data-animate="fadeInLeftBig">Imprezy plenerowe</h3>
-				<img src="img/party.png" alt="">
-			</div>
-		</div>
-</section>
-<!-------------------------------------//offer----------------------------------------->
 
 <!-------------------------------------Gallery------------------------------------------->
 <section id="gallery">
 <div class="container-fluid">
-	<div class="row">
-	<h1 data-animate="fadeInDownBig">Galeria</h1>
+	<div class="row" data-animate="fadeIn">
+	<h1 data-animate="fadeInUp">Galeria</h1>
 			<hr class="line">
 		<div class="col-md-4">
-			<img src="/img/11393135_1428998107423246_2761154735002578142_n.jpg" alt="">
+			<img src="/img/forum%20(1).JPG" alt="">
 		</div>
 		
 		<div class="col-md-4">
-			<img src="/img/15800527_1422196551124130_2130878196306101214_o.jpg" alt="">
+			<img src="/img/forum%20(2).JPG" alt="">
 		</div>
 		
 		<div class="col-md-4">
-			<img src="/img/15826484_1422198414457277_7192256557386571983_n.jpg" alt="">
+			<img src="/img/forum%20(3).JPG" alt="">
 		</div>
 		
 		<div class="col-md-4">
-			<img src="/img/DSC_3583.JPG" alt="">
+			<img src="/img/forum%20(4).JPG" alt="">
 		</div>
 		
 		<div class="col-md-4">
-			<img src="/img/DSC_3695.JPG" alt="">
+			<img src="/img/forum%20(5).JPG" alt="">
 		</div>
 		
 		<div class="col-md-4">
-			<img src="/img/DSC_3737.JPG" alt="">
+			<img src="/img/forum%20(6).JPG" alt="">
+		</div>
+		
+				<div class="col-md-4">
+			<img src="/img/forum%20(7).JPG" alt="">
 		</div>
 		
 		<div class="col-md-4">
-			<img src="/img/DSC_3760.JPG" alt="">
+			<img src="/img/forum%20(8).JPG" alt="">
 		</div>
 		
 		<div class="col-md-4">
-			<img src="/img/DSC_1907.JPG" alt="">
+			<img src="/img/forum%20(9).JPG" alt="">
 		</div>
 		
 		<div class="col-md-4">
-			<img src="/img/15826484_1422198414457277_7192256557386571983_n.jpg" alt="">
+			<img src="/img/forum%20(14).JPG" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/forum%20(11).JPG" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/forum%20(8).JPG" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/forum%20(13).JPG" alt="">
+		</div>
+		
+		<div class="col-md-4">
+			<img src="/img/forum%20(12).JPG" alt="">
 		</div>
 		
 	</div>
@@ -254,13 +256,16 @@
 </section>
 <!-------------------------------------//Gallery----------------------------------------->
 
+
+
 <!-------------------------------------Audio------------------------------------------->
 <section id="audio">
 	<div class="container-fluid">
-		<div class="row">
-			<h1 data-animate="zoomIn">Multimedia</h1>
+		<div class="row" data-animate="fadeIn">
+			<h1 data-animate="fadeInUp">Multimedia</h1>
 			<hr class="line">
-			<div class="vol-md-12">
+<!--
+			<div class="col-md-offset-1 col-md-10 boxy" >
 				<p>Adam - "Szaleje za Tobą"</p>
 				<audio src="audio/Track%2003.mp3" controls></audio>
 				<p>Adam - "Szaleje za Tobą"</p>
@@ -270,25 +275,103 @@
 				<p>Adam - "Szaleje za Tobą"</p>
 				<audio src="audio/Track%2003.mp3" controls></audio>
 			</div>
+-->
+ <div class="col-md-ofset-2 col-md-8">
+  <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+	<div class="jp-type-playlist">
+		<div class="jp-gui jp-interface">
+			<div class="jp-controls">
+				<button class="jp-previous" role="button" tabindex="0">previous</button>
+				<button class="jp-play" role="button" tabindex="0">play</button>
+				<button class="jp-next" role="button" tabindex="0">next</button>
+				<button class="jp-stop" role="button" tabindex="0">stop</button>
+			</div>
+			<div class="jp-progress">
+				<div class="jp-seek-bar">
+					<div class="jp-play-bar"></div>
+				</div>
+			</div>
+			<div class="jp-volume-controls">
+				<button class="jp-mute" role="button" tabindex="0">mute</button>
+				<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+			</div>
+			<div class="jp-time-holder">
+				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+			</div>
+			<div class="jp-toggles">
+				<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+				<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+			</div>
+		</div>
+		<div class="jp-playlist">
+			<ul>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+</div>
+ </div>
+  
+<!-------->
 		</div>
 	</div>
 </section>
 
 <!-------------------------------------//Audio----------------------------------------->
 
+<!-------------------------------------offer------------------------------------------->
+<section id="offer">
+  <div class="container-fluid">
+    
+      <h1 data-animate="fadeInUp">Nasza oferta</h1>
+      <hr class="line">
+      <div class="row" data-animate="fadeIn">
+       
+        <div class="col-md-3 ikonki " data-animate="fadeInLeft">
+          <h3>Imprezy okolicznościowe</h3>
+          <img src="img/party2.png" alt="">
+        </div>
+
+        <div class="col-md-3 ikonki" data-animate="fadeInLeft">
+          <h3>Wesela</h3>
+          <img src="img/wedding.png" alt="">
+        </div>
+
+        <div class="col-md-3 ikonki" data-animate="fadeInLeft">
+          <h3>Sylwester</h3>
+          <img src="img/happy_new_year.png" alt="">
+        </div>
+
+        <div class="col-md-3 ikonki" data-animate="fadeInLeft">
+          <h3>Imprezy plenerowe</h3>
+          <img src="img/party.png" alt="">
+        </div>
+      </div>
+  </div>
+</section>
+<!-------------------------------------//offer----------------------------------------->
+
 <!-------------------------------------Contact------------------------------------------->
 <section id="contact">
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
+		<div class="row" data-animate="fadeIn">
+			<div class="col-md-12" >
 				<h1 data-animate="fadeInUp">Kontakt</h1>
 				<hr class="line">
 				<p>ADAM BOCHAJ</p>
 				<p>602 852 867 </p>
 				<p>(25) 781 00 56</p>
-				<p>Lub napisz do Nas</p>
+				<br>
+				<p>Napisz do Nas</p>
 				<p>adamforum@wp.pl</p>
 				<p>adamforum@poczta.onet.pl</p>
+				<br>
+				<p>Jestesmy na Facebooku</p>
 				<a href="https://www.facebook.com/Zesp%C3%B3%C5%82-muzyczny-Forum-1428401387482918/" target="_blank">
 					<i class="ion-social-facebook btn btn-lg"></i>
 				</a>
@@ -317,6 +400,8 @@
 <script src="js/custom.js"></script>
 <script src="js/jquery.viewportchecker.min.js"></script>
 <script src="js/jquery.smooth-scroll.min.js"></script>
+<script src="js/audio/jplayer.playlist.min.js"></script>
+<script src="js/audio/jquery.jplayer.min.js"></script>
   
 </body>
 </html>
