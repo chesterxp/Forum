@@ -1,0 +1,520 @@
+body {
+	background: #2f2e2e;
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	h1 {
+		font-size: 2em;
+		text-transform: uppercase;
+	}
+}
+
+//<!-------------------------------------nav------------------------------------------->
+#nav {
+	
+	.navbar {
+		text-transform: uppercase;
+		opacity: 0.7;
+		a {
+			font-size: 0.9em;
+			padding: 20px;
+			
+		}
+	}
+}
+
+//<!-------------------------------------//nav----------------------------------------->
+//<!-------------------------------------slider------------------------------------------->
+#slider {
+	.carousel-inner {
+		img {
+			width: auto;
+			height: auto;
+		}
+		.carousel-caption {
+			position: absolute;
+			top: 70%;
+		}
+		a,
+		p {
+			font-size: 2em;
+			text-decoration: none;
+			opacity: 0.7;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+//<!-------------------------------------//slider----------------------------------------->
+
+
+//<!-------------------------------------offer------------------------------------------->
+#offer {
+	text-align: center;
+	background: #f7ebeb;
+	color: black;
+	padding: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	img {
+		width: 70%;
+		
+	}
+	h3 {
+		font-size: 1.2em;
+	}
+	.line {
+		border-bottom: 2px solid black;
+	}
+}
+
+//<!-------------------------------------//offer----------------------------------------->
+
+
+//<!-------------------------------------About US------------------------------------------->
+#about {
+	.container-fluid {
+		background: url('img/music9.jpg');
+		background-size: cover;
+		background-attachment: fixed;
+		text-align: center;
+		padding: 10px 70px;
+		.row {
+			width: 100%;
+			text-align: center;
+			background: #000000;
+			color: white;
+			opacity: 0.9;
+			padding: 100px;
+			border-radius: 10px;
+			.pole1,
+			.pole2,
+			.pole3,
+			.pole4 {
+				i {
+					font-size: 2em;
+					color: #165c98;
+					padding: 50px 0;
+				}
+				h2 {
+					text-align: left;
+					padding: 5px 0 5px 5px;
+					text-transform: uppercase;
+					font-size: 0.9em;
+					font-weight: bold;
+				}
+				p {
+					font-size: 0.7em;
+					text-align: left;
+					padding: 5px 0 5px 5px;
+				}
+			}
+			.pole2 {
+				border-left: 1px solid rgba(255, 255, 255, 0.17);
+			}
+			.pole3 {
+				border-top: 1px solid rgba(255, 255, 255, 0.17);
+			}
+			.pole4 {
+				border-left: 1px solid rgba(255, 255, 255, 0.17);
+				border-top: 1px solid rgba(255, 255, 255, 0.17);
+			}
+		}
+	}
+}
+
+//<!-------------------------------------//About US----------------------------------------->
+//<!-------------------------------------Team------------------------------------------->
+#team {
+	padding: 100px 20px;
+	text-align: center;
+	background: url('/img/music4.jpg');
+	background-size: cover;
+	.container-fluid {
+		.row {
+			.aneta {
+				background: url('/img/face/aneta.JPG');
+				background-size: cover;
+			}
+			.adam {
+				background: url(/img/face/boss.JPG);
+				background-size: cover;
+			}
+			.adam2 {
+				background: url(/img/face/adam.jpg);
+				background-size: cover;
+			}
+			.grzesiek {
+				background: url(/img/face/grzesiek.JPG);
+				background-size: cover;
+			}
+			.okno {
+				box-shadow: 0 0 40px white;
+				width: 250px;
+				height: 250px;
+				margin-left: auto;
+				margin-right: auto;
+				p {
+					width: 250px;
+					height: 250px;
+					padding: 20px 20px;
+					margin: 0;
+					background: #000000;
+					opacity: 0;
+					display: table-cell;
+					vertical-align: middle;
+					font-weight: bold;
+					font-size: 1em;
+					a {
+						text-decoration: none;
+						display: inline-block;
+						padding: 5px 6px;
+						box-sizing: border-box;
+						&:hover {
+							color: #2c2c2c;
+						}
+					}
+				}
+				&:hover {
+					p {
+						transition: opacity 0.7s;
+						opacity: 0.8;
+					}
+				}
+				span {
+					color: gold;
+				}
+			}
+			.napis {
+				margin: 20px;
+				font-size: 1.2em;
+				letter-spacing: 3px;
+				text-shadow: 0 0 20px black, 0 0 30px #0b5c8e;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+//<!-------------------------------------//Team----------------------------------------->
+//<!-------------------------------------Gallery------------------------------------------->
+#gallery {
+	text-align: center;
+	padding: 10px 0 0 0;
+	background: url(/img/music8.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	.row {
+		margin-top: 100px;
+		.col-md-4 {
+			margin: 0;
+			padding: 0;
+		}
+		img {
+			width: 100%;
+			max-height: 350px;
+			display: inline-block;
+			transform: scale(1, 1);
+			transition-timing-function: ease-out;
+			transition-duration: 250ms;
+			-webkit-transform: scale(1, 1);
+			-webkit-transition-timing-function: ease-out;
+			-webkit-transition-duration: 250ms;
+			-moz-transform: scale(1, 1);
+			-moz-transition-timing-function: ease-out;
+			-moz-transition-duration: 250ms;
+			&:hover {
+				transform: scale(1.1, 1.12);
+				transition-timing-function: ease-out;
+				transition-duration: 250ms;
+				-webkit-transform: scale(1.1, 1.12);
+				-webkit-transition-timing-function: ease-out;
+				-webkit-transition-duration: 250ms;
+				-moz-transform: scale(1.1, 1.12);
+				-moz-transition-timing-function: ease-out;
+				-moz-transition-duration: 250ms;
+				position: relative;
+				z-index: 99;
+			}
+		}
+	}
+}
+
+//<!-------------------------------------//Gallery----------------------------------------->
+//<!-------------------------------------Audio------------------------------------------->
+#audio {
+	text-align: center;
+	background: url(/img/music12.jpg);
+	background-size: cover;
+	padding: 100px 0;
+	.row {
+		.media {
+			#jp_container_1 {
+				margin: 0 auto;
+			}
+			.jp-type-playlist {
+				font-size: 1em;
+				text-align: left;
+			}
+		}
+	}
+}
+
+//<!-------------------------------------//Audio----------------------------------------->
+//<!-------------------------------------Contact------------------------------------------->
+#contact {
+	background: url(/img/music1.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	text-align: center;
+	color: black;
+	padding: 100px 70px 50px 70px;
+	.line {
+		border: 2px solid black;
+	}
+	.row {
+		font-size: 1.5em;
+		a {
+			background: #2b64a7;
+			text-decoration: none;
+			color: white;
+			border-radius: 3px;
+			i {
+				font-size: 1em;
+				padding: 10px;
+			}
+			&:hover {
+				background: #1a42a5;
+			}
+		}
+	}
+}
+
+//<!-------------------------------------//Contact----------------------------------------->
+//<!-------------------------------------Footer------------------------------------------->
+#footer {
+	p {
+		display: block;
+		padding: 7px 0;
+		margin: 0;
+		text-align: center;
+		font-size: 0.7em;
+	}
+}
+
+//<!-------------------------------------//Footer----------------------------------------->
+//<!-------------------------------------Others------------------------------------------->
+
+
+#off {
+	background: url(/img/music10.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	padding: 70px;
+	.container {
+		width: 80%;
+		padding: 70px 20px;
+		text-align: center;
+		background: #fcfcfc;
+		opacity: 0.7;
+		color: black;
+		
+		.line{
+			border: 2px solid black;
+		}
+		
+		.line2{
+			border-bottom: 1px solid #726e6e;
+		}
+		.line3{
+			border-right:1px solid #726e6e;
+		}
+		.row {
+			width: 60%;
+			padding: 20px 40px;
+			margin: 0 auto;
+			h3 {
+				font-size: 1.5em;
+				padding: 30px 10px;
+			}
+			img{
+				width: 30%;
+				height: auto;
+				color: white;
+			}
+		}
+	}
+}
+
+.line {
+	width: 40%;
+	margin-bottom: 100px;
+	border: 2px solid white;
+}
+
+//viewportchecker
+.hidee {
+	opacity: 0
+}
+
+.showw {
+	opacity: 1;
+}
+
+//<!-------------------------------------//Others----------------------------------------->
+@media all and (max-width: 768px) {
+	body {
+		font-size: 14px;
+	}
+	#slider {
+		.carousel-inner {
+			img {
+				width: 100%;
+				height: 300px;
+			}
+			a {
+				display: none;
+			}
+		}
+	}
+	#offer {
+		padding: 20px 10px;
+		margin-left: auto;
+		margin-right: auto;
+		img {
+			padding: 30px 60px;
+		}
+	}
+	#about {
+		.container-fluid {
+			padding: 100px 20px;
+			.row {
+				padding: 20px 20px;
+				margin: 0 auto;
+				.pole1,
+				.pole2,
+				.pole3,
+				.pole4 {
+					h2 {
+						text-align: center;
+					}
+					i {
+						padding: 30px;
+					}
+					p {
+						font-size: 1em;
+						text-align: center;
+					}
+				}
+				.pole2 {
+					border-left: none;
+				}
+				.pole3 {
+					border-top: none;
+				}
+				.pole4 {
+					border-left: none;
+					border-top: none;
+				}
+			}
+		}
+	}
+	#team {
+		padding: 50px 0px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#audio {
+		padding: 50px 0;
+		.row {
+			.media {
+				#jp_container_1 {
+					margin: 0;
+					width: 100%;
+				}
+				.jp-type-playlist {
+					font-size: 1em;
+				}
+			}
+		}
+	}
+	#contact {
+		padding: 50px 0;
+	}
+}
+
+@media all and (min-width:769px) and (max-width:992px) {
+	body {
+		font-size: 16px;
+	}
+	#nav {
+		.navbar {
+			opacity: 0.8;
+			a {
+				font-size: 0.8em;
+			}
+		}
+	}
+	#slider {
+		.carousel-inner {
+			img {
+				width: 100%;
+				height: auto;
+			}
+			a {
+				display: none;
+			}
+		}
+	}
+	#about {
+		.container-fluid {
+			padding: 50px 20px;
+			.row {
+				padding: 20px 20px;
+				margin: 0 auto;
+				.pole1,
+				.pole2,
+				.pole3,
+				.pole4 {
+					h2 {
+						text-align: center;
+					}
+					i {
+						padding: 30px;
+					}
+					p {
+						text-align: center;
+					}
+				}
+				.pole2 {
+					border-left: 1px solid rgba(255, 255, 255, 0.17);
+				}
+				.pole3 {
+					border-top: 1px solid rgba(255, 255, 255, 0.17);
+				}
+				.pole4 {
+					border-left: 1px solid rgba(255, 255, 255, 0.17);
+					border-top: 1px solid rgba(255, 255, 255, 0.17);
+				}
+			}
+		}
+	}
+	#team {
+		padding: 50px 10px;
+	}
+	#audio {
+		padding: 50px 0;
+		.row {
+			.media {
+				#jp_container_1 {
+					margin: 0;
+					width: 105%;
+				}
+				.jp-type-playlist {
+					font-size: 0.9em;
+				}
+			}
+		}
+	}
+}
