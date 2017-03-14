@@ -20,19 +20,14 @@ $(document).ready(function () {
 		cssSelectorAncestor: "#jp_container_1"
 	}, [
 		{
-			title: "Kochać Cię za późno - z repertuaru zespołu Kombi",
+			title: "Kochać Cię za późno - z repertuaru Kombi",
 			mp3: "audio/Track%2001.mp3",
 			oga: "audio/Track%2001.mp3"
 		},
 		{
-			title: "Move in the Right Direction - z repertuaru zespołu Gossip",
+			title: "Move in the Right Direction - z repertuaru Gossip",
 			mp3: "audio/Track%2030.mp3",
 			oga: "audio/Track%2030.mp3"
-		},
-		{
-			title: "Za daleko mieszkasz miły - z repertuaru A. Rusowicz",
-			mp3: "audio/Track%2027.mp3",
-			oga: "audio/Track%2027.mp3"
 		},
 		{
 			title: "Co za noc - z repertuaru Dystans",
@@ -171,11 +166,7 @@ $(document).ready(function () {
 			mp3: "audio/Track%2024.mp3",
 			oga: "audio/Track%2024.mp3"
 		},
-		{
-			title: "Moja Gitara - z repertuaru Lider",
-			mp3: "audio/Track%2012.mp3",
-			oga: "audio/Track%2012.mp3"
-		},
+
 
 
 
