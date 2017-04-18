@@ -179,6 +179,18 @@ $(document).ready(function () {
 		smoothPlayBar: true,
 		keyEnabled: true
 	});
+  
+  
+  //-----------------------nav2----------------------------------//
+    $(window).scroll(function(){
+    if($(this).scrollTop()>600){
+      $('#nav2').show('slow');
+    }
+    else {
+      $('#nav2').hide(1000);
+    }
+  });
+  //-----------------------nav2----------------------------------//
 
 
 });
