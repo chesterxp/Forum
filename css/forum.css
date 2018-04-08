@@ -1,0 +1,733 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  background: #111111;
+  line-height: 1;
+  font-family: 'Lato', sans-serif;
+  color: #fff; }
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5; }
+
+body::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5; }
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555; }
+
+.mainTitle {
+  text-align: center;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 20px 0 10px 0; }
+  .mainTitle:after {
+    content: "";
+    display: block;
+    border-bottom: 2px solid #ffffff3b;
+    width: 27%;
+    margin: 20px auto; }
+
+.hide {
+  opacity: 0; }
+
+.show {
+  opacity: 1; }
+
+#nav {
+  display: flex;
+  background: linear-gradient(to top right, rgba(0, 0, 0, 0.64), rgba(255, 3, 3, 0.68)); }
+  #nav .mainLogo {
+    font-size: 20px;
+    padding: 20px;
+    color: #fff; }
+  #nav .mobiBtn {
+    position: absolute;
+    top: 6px;
+    right: -10px;
+    background: url(../img2/menu2.png) no-repeat;
+    width: 70px;
+    height: 70px; }
+  #nav .navBox {
+    display: none;
+    flex-direction: column;
+    z-index: 10;
+    background: linear-gradient(to top right, rgba(0, 0, 0, 0.84), rgba(255, 3, 3, 0.88));
+    width: 100%;
+    position: absolute;
+    top: 60px; }
+    #nav .navBox a {
+      text-decoration: none;
+      padding: 15px;
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+      text-transform: uppercase;
+      font-size: 14px; }
+      #nav .navBox a:hover {
+        background: #1d80ad; }
+  #nav .show {
+    display: flex; }
+
+#slider {
+  overflow: hidden;
+  position: relative; }
+  #slider #sliderBox {
+    display: flex;
+    width: 400%;
+    animation: next 64s infinite ease;
+    position: relative;
+    left: 0;
+    height: 200px; }
+    #slider #sliderBox img {
+      width: 25%; }
+  #slider .caption {
+    position: absolute;
+    font-size: 15px;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0000004a;
+    padding: 10px 20px;
+    border-radius: 2px;
+    box-shadow: 0 0 50px #fff; }
+@keyframes next {
+  0% {
+    left: 0%; }
+  25% {
+    left: -100%; }
+  59% {
+    left: -200%; }
+  75% {
+    left: -300%; }
+  100% {
+    left: 0; } }
+#offer {
+  padding: 50px 0; }
+  #offer .offerBox .box {
+    width: 70%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 11px 0px #ffffff52;
+    background: #fff;
+    color: #000; }
+  #offer .offerBox .titleOffer {
+    padding: 20px 0;
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center; }
+  #offer .offerBox .fotoOffer {
+    width: 100%;
+    height: 250px; }
+  #offer .offerBox .fotoOffer1 {
+    background: url(../img2/offer1.png) no-repeat;
+    background-size: 70%;
+    background-position: center; }
+  #offer .offerBox .fotoOffer2 {
+    background: url(../img2/offer2.png) no-repeat;
+    background-size: 70%;
+    background-position: center; }
+  #offer .offerBox .fotoOffer3 {
+    background: url(../img2/offer3.png) no-repeat;
+    background-size: 70%;
+    background-position: center; }
+  #offer .offerBox .fotoOffer4 {
+    background: url(../img2/offer4.png) no-repeat;
+    background-size: 70%;
+    background-position: center; }
+
+#aboutUs {
+  background: url(../img2/music9.jpg) no-repeat;
+  background-attachment: fixed;
+  padding: 50px 0; }
+  #aboutUs .aboutUsBox {
+    background: rgba(0, 0, 0, 0.829);
+    color: #fff;
+    border-radius: 5px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center; }
+    #aboutUs .aboutUsBox .box {
+      padding: 10px 0; }
+      #aboutUs .aboutUsBox .box .icon {
+        padding: 20px 0; }
+      #aboutUs .aboutUsBox .box .text .title {
+        padding: 10px; }
+      #aboutUs .aboutUsBox .box .text .caption {
+        padding: 10px;
+        line-height: 25px; }
+
+#team {
+  padding: 50px 0; }
+  #team #teamBox .person {
+    width: 250px;
+    position: relative;
+    margin: 0 auto; }
+    #team #teamBox .person .main {
+      overflow: hidden;
+      position: relative; }
+    #team #teamBox .person:hover .caption {
+      bottom: 1px; }
+    #team #teamBox .person img {
+      width: 100%;
+      transition: all 0.3s ease-in-out; }
+    #team #teamBox .person .name {
+      padding: 10px 5px;
+      text-align: center;
+      margin-bottom: 20px; }
+    #team #teamBox .person .caption {
+      position: absolute;
+      bottom: -60px;
+      background: rgba(0, 0, 0, 0.67);
+      color: #fff;
+      font-size: 16px;
+      padding: 20px 0;
+      width: 100%;
+      text-align: center;
+      transition: all 0.3s ease-in-out; }
+    #team #teamBox .person .boss {
+      color: gold; }
+
+#gallery {
+  padding: 50px 0; }
+  #gallery #galleryBox {
+    height: 250px;
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: nowrap; }
+    #gallery #galleryBox img {
+      width: 100%; }
+    #gallery #galleryBox::-webkit-scrollbar-track {
+      display: none; }
+    #gallery #galleryBox::-webkit-scrollbar {
+      display: none; }
+    #gallery #galleryBox::-webkit-scrollbar-thumb {
+      display: none; }
+  #gallery #modal {
+    display: none; }
+
+#player {
+  padding: 50px 0; }
+  #player #playerBox {
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 5px;
+    background: url(../img2/playerBG.jpg);
+    height: 500px;
+    position: relative;
+    box-shadow: 0 0 22px #0000008a;
+    font-family: 'Roboto', sans-serif; }
+  #player #mainPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    position: relative;
+    height: 100%; }
+    #player #mainPanel #playListButton {
+      background: url(../img2/a-playList.png) no-repeat;
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 10px;
+      left: 10px; }
+      #player #mainPanel #playListButton::after {
+        content: "";
+        transition: all 0.5s ease-in-out; }
+      #player #mainPanel #playListButton:hover::after {
+        content: "";
+        box-shadow: inset 0 0 10px #ddd;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 3px;
+        top: -2px;
+        left: -5px;
+        transition: all 0.3s ease-in-out; }
+    #player #mainPanel .titleBox {
+      padding: 20px 0;
+      font-size: 20px;
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff; }
+      #player #mainPanel .titleBox .band, #player #mainPanel .titleBox .title {
+        padding: 5px 0; }
+      #player #mainPanel .titleBox .band {
+        font-size: 15px; }
+      #player #mainPanel .titleBox .title {
+        font-size: 25px; }
+    #player #mainPanel #songFoto {
+      width: 80%;
+      height: 100px;
+      background: url(../img2/funFotoBG.jpg);
+      background-size: cover !important;
+      background-position: center center !important;
+      margin: 10px auto;
+      flex: 3;
+      box-shadow: 0 0 10px #7d7d7d; }
+    #player #mainPanel #progresBar {
+      flex: 1; }
+      #player #mainPanel #progresBar #lineTime {
+        width: 90%;
+        height: 7px;
+        margin: 45px auto 10px;
+        background: white;
+        position: relative; }
+        #player #mainPanel #progresBar #lineTime #lineColor {
+          width: 0%;
+          height: 7px;
+          background: #7c0909;
+          position: absolute;
+          top: 0;
+          left: 0; }
+        #player #mainPanel #progresBar #lineTime #durationTime {
+          position: absolute;
+          left: 0%;
+          top: -25px;
+          font-size: 12px;
+          color: #fff; }
+    #player #mainPanel #buttonBox {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px 0;
+      position: relative;
+      flex: 2; }
+      #player #mainPanel #buttonBox .button {
+        display: flex;
+        justify-content: center;
+        width: 50px;
+        height: 50px; }
+        #player #mainPanel #buttonBox .button::after {
+          content: "";
+          transition: all 0.5s ease-in-out; }
+        #player #mainPanel #buttonBox .button:hover::after {
+          content: "";
+          box-shadow: inset 0 0 10px #ddd;
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          border-radius: 3px;
+          transform: translate(0%, -3%);
+          transition: all 0.3s ease-in-out; }
+      #player #mainPanel #buttonBox #prev {
+        background: url(../img2/a-prev.png) no-repeat;
+        background-size: cover; }
+      #player #mainPanel #buttonBox #play {
+        background: url(../img2/a-play.png) no-repeat;
+        background-size: cover; }
+      #player #mainPanel #buttonBox #pause {
+        background: url(../img2/a-pause.png) no-repeat;
+        background-size: cover; }
+      #player #mainPanel #buttonBox #next {
+        background: url(../img2/a-next.png) no-repeat;
+        background-size: cover; }
+      #player #mainPanel #buttonBox #stop {
+        background: url(../img2/a-stop.png) no-repeat;
+        background-size: cover; }
+      #player #mainPanel #buttonBox #volume2 {
+        background: url(../img2/a-volume.png) no-repeat;
+        background-size: cover; }
+        #player #mainPanel #buttonBox #volume2:hover .val {
+          display: flex; }
+        #player #mainPanel #buttonBox #volume2 .val {
+          display: none;
+          background: #1c1a1a;
+          transform: rotate(270deg);
+          position: absolute;
+          top: -35px;
+          padding: 13px;
+          z-index: 10;
+          border-radius: 3px; }
+  #player #playlist {
+    display: none;
+    background: #383838;
+    height: 400px;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%; }
+    #player #playlist::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5; }
+    #player #playlist::-webkit-scrollbar {
+      width: 12px;
+      background-color: #F5F5F5; }
+    #player #playlist::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #555; }
+    #player #playlist #backPlayList {
+      position: fixed;
+      top: 10px;
+      right: 54px;
+      padding: 11px;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      font-size: 30px;
+      transition: all 0.3s ease-in-out; }
+      #player #playlist #backPlayList:hover {
+        background: rgba(0, 0, 0, 0.801); }
+    #player #playlist .song {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 5px;
+      color: #fff;
+      border-bottom: 1px solid rgba(221, 221, 221, 0.185);
+      transition: all 0.3s ease-in-out; }
+      #player #playlist .song .number {
+        flex: 1;
+        padding: 0px 10px;
+        font-size: 12px; }
+      #player #playlist .song .title {
+        flex: 8;
+        text-align: center; }
+        #player #playlist .song .title .artist {
+          font-size: 10px; }
+        #player #playlist .song .title .titleOfSong {
+          font-size: 13px; }
+      #player #playlist .song .time {
+        padding: 0px 10px;
+        flex: 2;
+        text-align: right;
+        font-size: 12px; }
+      #player #playlist .song:last-child {
+        border-bottom: none; }
+      #player #playlist .song:hover:not(.active) {
+        color: #c03939; }
+    #player #playlist .active {
+      background: #0b0b0b57; }
+    #player #playlist li {
+      text-align: center; }
+
+#car {
+  background: url(../img2/auto.jpg) no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  padding: 50px 0; }
+  #car #carCaption {
+    padding: 20px 0;
+    width: 90%;
+    margin: 20px auto;
+    line-height: 30px;
+    font-size: 15px;
+    background: rgba(0, 0, 0, 0.308);
+    text-align: center;
+    border-radius: 5px; }
+    #car #carCaption a {
+      color: #205e91;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out; }
+      #car #carCaption a:hover {
+        color: #d12020; }
+  #car #carBox {
+    height: 250px;
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: nowrap; }
+    #car #carBox::-webkit-scrollbar-track {
+      display: none; }
+    #car #carBox::-webkit-scrollbar {
+      display: none; }
+    #car #carBox::-webkit-scrollbar-thumb {
+      display: none; }
+    #car #carBox img {
+      width: 100%; }
+
+#contact {
+  background: url(../img2/music1.jpg) no-repeat;
+  background-size: cover;
+  background-position: left;
+  color: #000;
+  padding: 50px 0; }
+  #contact .mainTitle {
+    color: #000; }
+    #contact .mainTitle:after {
+      content: "";
+      border-bottom: 2px solid #000; }
+  #contact #contactBox {
+    text-align: center;
+    margin: 0px auto;
+    width: 90%; }
+    #contact #contactBox p {
+      padding: 10px 0; }
+    #contact #contactBox a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 15px;
+      background: #4267b2;
+      padding: 10px;
+      display: inline-block;
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out; }
+      #contact #contactBox a:hover {
+        background: #1c3872; }
+
+#friends {
+  display: flex;
+  padding: 20px 0; }
+  #friends .footerBox {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1; }
+    #friends .footerBox .title {
+      text-transform: uppercase;
+      padding: 20px 0;
+      font-size: 13px;
+      color: #686868;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px; }
+    #friends .footerBox a {
+      text-decoration: none;
+      color: #bfbfbf;
+      padding: 4px 0;
+      font-size: 13px; }
+
+#footer {
+  font-size: 12px;
+  text-align: center;
+  padding: 7px 0;
+  background: #000; }
+  #footer .author a {
+    color: #1676b6;
+    font-size: 12px;
+    text-decoration: none; }
+    #footer .author a:hover {
+      color: #b81f1f; }
+
+@media all and (min-width: 800px) {
+  .mainTitle {
+    padding: 10px 0 40px 0; }
+
+  #nav {
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    width: 100%; }
+    #nav .mainLogo {
+      flex: 2;
+      font-size: 16px; }
+    #nav .mobiBtn {
+      display: none; }
+    #nav .navBox {
+      display: flex;
+      flex: 7;
+      flex-direction: row;
+      justify-content: flex-end;
+      position: static;
+      background: none; }
+      #nav .navBox a {
+        font-size: 12px; }
+        #nav .navBox a:hover {
+          color: #1956b1;
+          background: none; }
+
+  #slider {
+    position: relative; }
+    #slider #sliderBox {
+      height: 100vh; }
+    #slider .caption {
+      font-size: 50px; }
+
+  #offer {
+    padding: 50px 20px 100px 20px; }
+    #offer .offerBox {
+      display: flex; }
+      #offer .offerBox .box {
+        margin: 5px; }
+        #offer .offerBox .box .fotoOffer {
+          background-size: 50%; }
+
+  #aboutUs {
+    padding: 50px 20px 100px 20px;
+    background-size: cover; }
+    #aboutUs .aboutUsBox {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 30px; }
+      #aboutUs .aboutUsBox .box {
+        width: 50%;
+        padding: 20px; }
+        #aboutUs .aboutUsBox .box:first-child {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.17);
+          border-right: 1px solid rgba(255, 255, 255, 0.17); }
+        #aboutUs .aboutUsBox .box:nth-child(2) {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.17); }
+        #aboutUs .aboutUsBox .box:nth-child(3) {
+          border-right: 1px solid rgba(255, 255, 255, 0.17); }
+      #aboutUs .aboutUsBox .caption {
+        font-size: 16px; }
+
+  #team {
+    padding: 50px 20px 100px 20px; }
+    #team #teamBox {
+      display: flex; }
+
+  #gallery {
+    padding: 50px 20px 100px 20px; }
+    #gallery #galleryBox {
+      flex-wrap: wrap;
+      overflow: visible;
+      height: auto;
+      justify-content: center;
+      align-items: center; }
+      #gallery #galleryBox img {
+        width: 20%;
+        height: 150px;
+        overflow: hidden;
+        margin: 4px;
+        box-shadow: 0 0 6px #ffffffba;
+        transition: all 0.3s ease-in-out; }
+        #gallery #galleryBox img:hover {
+          transform: scale(1.03); }
+    #gallery #modal {
+      display: none;
+      position: relative; }
+      #gallery #modal .back {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #000000c4;
+        z-index: 101; }
+      #gallery #modal .galleryFoto {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 5px solid #fff;
+        border-radius: 5px;
+        width: 70vw;
+        z-index: 102; }
+        #gallery #modal .galleryFoto img {
+          width: 100%; }
+        #gallery #modal .galleryFoto #captionFoto {
+          position: absolute;
+          bottom: 0;
+          padding: 10px 20px;
+          background: rgba(0, 0, 0, 0.37);
+          font-size: 14px;
+          letter-spacing: 1px; }
+        #gallery #modal .galleryFoto #closeFoto, #gallery #modal .galleryFoto #prevFoto, #gallery #modal .galleryFoto #nextFoto {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: #0d0d0d0f;
+          transition: all 0.3s ease-in-out;
+          border-radius: 1px; }
+          #gallery #modal .galleryFoto #closeFoto:hover, #gallery #modal .galleryFoto #prevFoto:hover, #gallery #modal .galleryFoto #nextFoto:hover {
+            background: #0d0d0d78; }
+        #gallery #modal .galleryFoto #closeFoto {
+          top: 0;
+          right: 0;
+          padding: 5px;
+          transform: translateY(0%); }
+        #gallery #modal .galleryFoto #nextFoto {
+          right: 0; }
+
+  #player {
+    padding: 50px 20px 100px 20px; }
+    #player #playerBox {
+      width: 700px;
+      display: flex; }
+    #player #mainPanel {
+      width: 350px; }
+      #player #mainPanel #playListButton {
+        display: none; }
+    #player #playlist {
+      width: 350px;
+      position: static;
+      display: block; }
+      #player #playlist #backPlayList {
+        display: none; }
+
+  #car {
+    padding: 50px 20px 100px 20px; }
+    #car #carCaption {
+      padding: 20px 40px;
+      width: 50%;
+      margin-bottom: 70px; }
+    #car #carBox {
+      flex-wrap: wrap;
+      overflow: visible;
+      height: auto; }
+      #car #carBox img {
+        width: 30%;
+        margin: 5px;
+        height: auto;
+        box-shadow: 0 0 20px #000000db; }
+
+  #contact {
+    padding: 50px 20px 100px 20px;
+    background-position: center center; }
+
+  #friends .footerBox a {
+    transition: all 0.3s ease-in-out; }
+    #friends .footerBox a:hover {
+      color: #215fbb; } }
+@media all and (min-width: 1600px) {
+  #gallery #galleryBox img {
+    height: 250px; } }
+
+/*# sourceMappingURL=forum.css.map */
