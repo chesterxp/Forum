@@ -1,3 +1,6 @@
 audio
-img2
-old version
+big_foto
+node_modules
+*.log
+.cache
+img

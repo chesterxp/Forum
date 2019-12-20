@@ -1,268 +1,829 @@
-//-----------------nav------------------
+/*!
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-// $('#navBox').hide();
-$('.mobiBtn').on('click', function(){
-    $('.navBox').toggleClass("show");
-})
-
-//animate a
-$('a[href^="#"]').on('click', function(event) {
-	
-		var target = $( $(this).attr('href') );
-	
-		if( target.length ) {
-			event.preventDefault();
-			$('html, body').animate({
-				scrollTop: target.offset().top
-			}, 1000);
-		}
-	});
-
-//show/hide elements
-
-$('*[data-animate]').addClass('hide').each(function(){
-    $(this).viewportChecker({
-      classToAdd: 'show animated ' + $(this).data('animate'),
-      classToRemove: 'hide',
-      offset: '30%'
-    });
-  });
-
-//----------------------player---------------------
-
-//--mobile version
-if(screen.width <= 800 ){
-    $('body').addClass('mobile');
-}
-var isMobile = $('body').is('.mobile');
-
-// console.log(isMobile);
-
-$('#pause').hide();
-
-var newAudio = new Audio('audio/Track-01.mp3');
-var oldAudio = new Audio('audio/Track-01.mp3');
-var newSong = false;
-var startPlay = false;
-
-
-//first song init
-playMusic($('#playlist .song').eq(0));
-
-function playMusic(element){
-    
-    if(element.length > 0){
-        var self = $(element);
+(function(i, l) {
+    if ("IntersectionObserver" in i && "IntersectionObserverEntry" in i && "intersectionRatio" in i.IntersectionObserverEntry.prototype) {
+        return
     }
-    else{
-        var self = $(this);
+    var b = [];
+
+    function e(p) {
+        this.time = p.time;
+        this.target = p.target;
+        this.rootBounds = p.rootBounds;
+        this.boundingClientRect = p.boundingClientRect;
+        this.intersectionRect = p.intersectionRect || j();
+        this.isIntersecting = !!p.intersectionRect;
+        var r = this.boundingClientRect;
+        var q = r.width * r.height;
+        var o = this.intersectionRect;
+        var n = o.width * o.height;
+        if (q) {
+            this.intersectionRatio = n / q
+        } else {
+            this.intersectionRatio = this.isIntersecting ? 1 : 0
+        }
     }
-    var song = self.attr('song'),
-        title = self.find('.titleOfSong').text(),
-        band = self.find('.artist').text(),
-        time = self.find('.time').text(),
-        foto = self.attr('foto');
-        url = 'url(../img2/small/'+foto+')';
-        oldAudio = newAudio;
 
-    $(' #fullTime').text(time);
-    $('.titleBox .title').text(title);
-    $('.titleBox .band').text(band);
-    $('#songFoto').css('background', url);
-
-    newAudio = new Audio('audio/'+song);
-    $('#playlist .song').removeClass('active');
-    self.addClass('active');
-    $('#pause').show();
-    $('#play').hide();
-
-    //dont start playing after reload page
-    if(startPlay == true){
-        oldAudio.pause();
-        newAudio.play();     
+    function a(p, o) {
+        var n = o || {};
+        if (typeof p != "function") {
+            throw new Error("callback must be a function")
+        }
+        if (n.root && n.root.nodeType != 1) {
+            throw new Error("root must be an Element")
+        }
+        this._checkForIntersections = m(this._checkForIntersections.bind(this), this.THROTTLE_TIMEOUT);
+        this._callback = p;
+        this._observationTargets = [];
+        this._queuedEntries = [];
+        this._rootMarginValues = this._parseRootMargin(n.rootMargin);
+        this.thresholds = this._initThresholds(n.threshold);
+        this.root = n.root || null;
+        this.rootMargin = this._rootMarginValues.map(function(q) {
+            return q.value + q.unit
+        }).join(" ")
     }
-    else{
+    a.prototype.THROTTLE_TIMEOUT = 100;
+    a.prototype.POLL_INTERVAL = null;
+    a.prototype.observe = function(n) {
+        if (this._observationTargets.some(function(o) {
+                return o.element == n
+            })) {
+            return
+        }
+        if (!(n && n.nodeType == 1)) {
+            throw new Error("target must be an Element")
+        }
+        this._registerInstance();
+        this._observationTargets.push({
+            element: n,
+            entry: null
+        });
+        this._monitorIntersections()
+    };
+    a.prototype.unobserve = function(n) {
+        this._observationTargets = this._observationTargets.filter(function(o) {
+            return o.element != n
+        });
+        if (!this._observationTargets.length) {
+            this._unmonitorIntersections();
+            this._unregisterInstance()
+        }
+    };
+    a.prototype.disconnect = function() {
+        this._observationTargets = [];
+        this._unmonitorIntersections();
+        this._unregisterInstance()
+    };
+    a.prototype.takeRecords = function() {
+        var n = this._queuedEntries.slice();
+        this._queuedEntries = [];
+        return n
+    };
+    a.prototype._initThresholds = function(o) {
+        var n = o || [0];
+        if (!Array.isArray(n)) {
+            n = [n]
+        }
+        return n.sort().filter(function(r, q, p) {
+            if (typeof r != "number" || isNaN(r) || r < 0 || r > 1) {
+                throw new Error("threshold must be a number between 0 and 1 inclusively")
+            }
+            return r !== p[q - 1]
+        })
+    };
+    a.prototype._parseRootMargin = function(n) {
+        var o = n || "0px";
+        var p = o.split(/\s+/).map(function(q) {
+            var r = /^(-?\d*\.?\d+)(px|%)$/.exec(q);
+            if (!r) {
+                throw new Error("rootMargin must be specified in pixels or percent")
+            }
+            return {
+                value: parseFloat(r[1]),
+                unit: r[2]
+            }
+        });
+        p[1] = p[1] || p[0];
+        p[2] = p[2] || p[0];
+        p[3] = p[3] || p[1];
+        return p
+    };
+    a.prototype._monitorIntersections = function() {
+        if (!this._monitoringIntersections) {
+            this._monitoringIntersections = true;
+            this._checkForIntersections();
+            if (this.POLL_INTERVAL) {
+                this._monitoringInterval = setInterval(this._checkForIntersections, this.POLL_INTERVAL)
+            } else {
+                f(i, "resize", this._checkForIntersections, true);
+                f(l, "scroll", this._checkForIntersections, true);
+                if ("MutationObserver" in i) {
+                    this._domObserver = new MutationObserver(this._checkForIntersections);
+                    this._domObserver.observe(l, {
+                        attributes: true,
+                        childList: true,
+                        characterData: true,
+                        subtree: true
+                    })
+                }
+            }
+        }
+    };
+    a.prototype._unmonitorIntersections = function() {
+        if (this._monitoringIntersections) {
+            this._monitoringIntersections = false;
+            clearInterval(this._monitoringInterval);
+            this._monitoringInterval = null;
+            k(i, "resize", this._checkForIntersections, true);
+            k(l, "scroll", this._checkForIntersections, true);
+            if (this._domObserver) {
+                this._domObserver.disconnect();
+                this._domObserver = null
+            }
+        }
+    };
+    a.prototype._checkForIntersections = function() {
+        var o = this._rootIsInDom();
+        var n = o ? this._getRootRect() : j();
+        this._observationTargets.forEach(function(s) {
+            var v = s.element;
+            var u = d(v);
+            var q = this._rootContainsTarget(v);
+            var r = s.entry;
+            var p = o && q && this._computeTargetAndRootIntersection(v, n);
+            var t = s.entry = new e({
+                time: c(),
+                target: v,
+                boundingClientRect: u,
+                rootBounds: n,
+                intersectionRect: p
+            });
+            if (!r) {
+                this._queuedEntries.push(t)
+            } else {
+                if (o && q) {
+                    if (this._hasCrossedThreshold(r, t)) {
+                        this._queuedEntries.push(t)
+                    }
+                } else {
+                    if (r && r.isIntersecting) {
+                        this._queuedEntries.push(t)
+                    }
+                }
+            }
+        }, this);
+        if (this._queuedEntries.length) {
+            this._callback(this.takeRecords(), this)
+        }
+    };
+    a.prototype._computeTargetAndRootIntersection = function(t, p) {
+        if (i.getComputedStyle(t).display == "none") {
+            return
+        }
+        var s = d(t);
+        var o = s;
+        var r = t.parentNode;
+        var q = false;
+        while (!q) {
+            var n = null;
+            if (r == this.root || r.nodeType != 1) {
+                q = true;
+                n = p
+            } else {
+                if (i.getComputedStyle(r).overflow != "visible") {
+                    n = d(r)
+                }
+            }
+            if (n) {
+                o = g(n, o);
+                if (!o) {
+                    break
+                }
+            }
+            r = r.parentNode
+        }
+        return o
+    };
+    a.prototype._getRootRect = function() {
+        var o;
+        if (this.root) {
+            o = d(this.root)
+        } else {
+            var p = l.documentElement;
+            var n = l.body;
+            o = {
+                top: 0,
+                left: 0,
+                right: p.clientWidth || n.clientWidth,
+                width: p.clientWidth || n.clientWidth,
+                bottom: p.clientHeight || n.clientHeight,
+                height: p.clientHeight || n.clientHeight
+            }
+        }
+        return this._expandRectByRootMargin(o)
+    };
+    a.prototype._expandRectByRootMargin = function(o) {
+        var p = this._rootMarginValues.map(function(r, q) {
+            return r.unit == "px" ? r.value : r.value * (q % 2 ? o.width : o.height) / 100
+        });
+        var n = {
+            top: o.top - p[0],
+            right: o.right + p[1],
+            bottom: o.bottom + p[2],
+            left: o.left - p[3]
+        };
+        n.width = n.right - n.left;
+        n.height = n.bottom - n.top;
+        return n
+    };
+    a.prototype._hasCrossedThreshold = function(p, s) {
+        var o = p && p.isIntersecting ? p.intersectionRatio || 0 : -1;
+        var r = s.isIntersecting ? s.intersectionRatio || 0 : -1;
+        if (o === r) {
+            return
+        }
+        for (var q = 0; q < this.thresholds.length; q++) {
+            var n = this.thresholds[q];
+            if (n == o || n == r || n < o !== n < r) {
+                return true
+            }
+        }
+    };
+    a.prototype._rootIsInDom = function() {
+        return !this.root || h(l, this.root)
+    };
+    a.prototype._rootContainsTarget = function(n) {
+        return h(this.root || l, n)
+    };
+    a.prototype._registerInstance = function() {
+        if (b.indexOf(this) < 0) {
+            b.push(this)
+        }
+    };
+    a.prototype._unregisterInstance = function() {
+        var n = b.indexOf(this);
+        if (n != -1) {
+            b.splice(n, 1)
+        }
+    };
+
+    function c() {
+        return i.performance && performance.now && performance.now()
+    }
+
+    function m(n, o) {
+        var p = null;
+        return function() {
+            if (!p) {
+                p = setTimeout(function() {
+                    n();
+                    p = null
+                }, o)
+            }
+        }
+    }
+
+    function f(p, o, n, q) {
+        if (typeof p.addEventListener == "function") {
+            p.addEventListener(o, n, q || false)
+        } else {
+            if (typeof p.attachEvent == "function") {
+                p.attachEvent("on" + o, n)
+            }
+        }
+    }
+
+    function k(p, o, n, q) {
+        if (typeof p.removeEventListener == "function") {
+            p.removeEventListener(o, n, q || false)
+        } else {
+            if (typeof p.detatchEvent == "function") {
+                p.detatchEvent("on" + o, n)
+            }
+        }
+    }
+
+    function g(q, o) {
+        var u = Math.max(q.top, o.top);
+        var p = Math.min(q.bottom, o.bottom);
+        var t = Math.max(q.left, o.left);
+        var r = Math.min(q.right, o.right);
+        var s = r - t;
+        var n = p - u;
+        return (s >= 0 && n >= 0) && {
+            top: u,
+            bottom: p,
+            left: t,
+            right: r,
+            width: s,
+            height: n
+        }
+    }
+
+    function d(n) {
+        var o = n.getBoundingClientRect();
+        if (!o) {
+            return
+        }
+        if (!o.width || !o.height) {
+            o = {
+                top: o.top,
+                right: o.right,
+                bottom: o.bottom,
+                left: o.left,
+                width: o.right - o.left,
+                height: o.bottom - o.top
+            }
+        }
+        return o
+    }
+
+    function j() {
+        return {
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0
+        }
+    }
+
+    function h(n, p) {
+        var o = p;
+        while (o) {
+            if (o.nodeType == 11 && o.host) {
+                o = o.host
+            }
+            if (o == n) {
+                return true
+            }
+            o = o.parentNode
+        }
+        return false
+    }
+    i.IntersectionObserver = a;
+    i.IntersectionObserverEntry = e
+}(window, document));
+
+var forum = {
+    isMobile: '',
+    init: function() {
+        this.isMobile = this.checkDevice();
+        this.animateAllLinks();
+        this.audioPlayer();
+        this.turnOnLazyLoadObservers();
+        this.mainSlider.init();
+
+        if (this.isMobile) {
+            document.querySelector('#volume2').style.display = 'none';
+            this.hamburgerButton();
+            this.mobileGallery('#galleryBox');
+            this.mobileGallery('#carBox');
+        } else {
+            this.main_gallery.init();
+        }
+    },
+    checkDevice: function() {
+        let windowWidth = document.body.clientWidth;
+        if (windowWidth < 801) {
+            return true;
+        }
+    },
+    hamburgerButton: function() {
+        var nav = document.querySelector('#nav');
+        const buttons = document.querySelectorAll('.navBox a, .hamburger-menu');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                nav.classList.toggle('showNavBox');
+            });
+        });
+    },
+    animateAllLinks: function() {
+        var all = document.querySelectorAll('a[href^="#"]');
+        all.forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var href = this.getAttribute('href');
+                var destination = document.querySelector(href).offsetTop - 50;
+                var currentPosition = window.pageYOffset;
+                var body = document.querySelector('body,html');
+                forum.animate(body, "scrollTop", "", currentPosition, destination, 600, true);
+            });
+        })
+    },
+    animate: function(elem, style, unit, from, to, time, prop) {
+        if (!elem) return;
+        var start = new Date().getTime(),
+            timer = setInterval(function() {
+                var step = Math.min(1, (new Date().getTime() - start) / time);
+                if (prop) {
+                    elem[style] = (from + step * (to - from)) + unit;
+                } else {
+                    elem.style[style] = (from + step * (to - from)) + unit;
+                }
+                if (step == 1) clearInterval(timer);
+            }, 25);
+        elem.style[style] = from + unit;
+    },
+    audioPlayer: function() {
         $('#pause').hide();
-        $('#play').show();
-    }
-    startPlay = true; 
 
-    showDuration();
+        var newAudio = new Audio('audio/Track-01.mp3');
+        var oldAudio = new Audio('audio/Track-01.mp3');
+        var newSong = false;
+        var startPlay = false;
 
-    if($('body').is('.mobile')){
-        $('#playlist').hide(500);
-    }
-    //dont change progresBar within playing song
-    newSong == true;
-}
-function showDuration(){
-    $(newAudio).bind('timeupdate', function(){
-        var s = parseInt(newAudio.currentTime%60);
-        var m = parseInt((newAudio.currentTime/60)%60);
-        var a = 0;
-        if(s < 10){
-            s = "0" + s;
+
+        //first song init
+        playMusic($('#playlist .song').eq(0));
+
+        function playMusic(element) {
+
+            if (element.length > 0) {
+                var self = $(element);
+            } else {
+                var self = $(this);
+            }
+            var song = self.attr('song'),
+                title = self.find('.titleOfSong').text(),
+                band = self.find('.artist').text(),
+                time = self.find('.time').text(),
+                foto = self.attr('foto'),
+                url = 'url(./img/small/' + foto + ')';
+            oldAudio = newAudio;
+
+            $(' #fullTime').text(time);
+            $('.titleBox .title').text(title);
+            $('.titleBox .band').text(band);
+            $('#songFoto').css('background', url);
+
+            newAudio = new Audio('audio/' + song);
+            $('#playlist .song').removeClass('active');
+            self.addClass('active');
+            $('#pause').show();
+            $('#play').hide();
+
+            //dont start playing after reload page
+            if (startPlay == true) {
+                oldAudio.pause();
+                newAudio.play();
+            } else {
+                $('#pause').hide();
+                $('#play').show();
+            }
+            startPlay = true;
+
+            showDuration();
+
+            if ($('body').is('.mobile')) {
+                $('#playlist').hide(500);
+            }
+            //dont change progresBar within playing song
+            newSong == true;
         }
-        if(m <10){
-            m = "0" + m;
+
+        function showDuration() {
+            $(newAudio).bind('timeupdate', function() {
+                var s = parseInt(newAudio.currentTime % 60);
+                var m = parseInt((newAudio.currentTime / 60) % 60);
+                var a = 0;
+                if (s < 10) {
+                    s = "0" + s;
+                }
+                if (m < 10) {
+                    m = "0" + m;
+                }
+                $('#duration').html(m + ":" + s);
+                var fullTime = parseFloat(newAudio.duration / 60, 10);
+                var minutes = parseFloat(newAudio.duration / 60, 10);
+                var secound = (newAudio.duration % 100);
+                var value = 0;
+
+                if (newAudio.currentTime > 0) {
+                    value = Math.floor((100 / newAudio.duration) * newAudio.currentTime);
+                }
+
+                $('#lineColor').css('width', value + '%');
+                if (newAudio.currentTime == newAudio.duration) {
+                    next();
+                }
+            })
         }
-        $('#duration').html(m+":"+s);
-        var fullTime = parseFloat(newAudio.duration/60,10);
-        var minutes = parseFloat(newAudio.duration/60, 10);
-        var secound = (newAudio.duration%100);
-        var value = 0;
 
-        if(newAudio.currentTime > 0){
-            value = Math.floor((100/newAudio.duration)*newAudio.currentTime);
+        function resetDuration() {
+            $('#lineColor').width(0);
         }
 
-        $('#lineColor').css('width', value+'%');
-        if(newAudio.currentTime == newAudio.duration){
-            next();
+        function play() {
+            oldAudio.pause();
+            newAudio.play();
+            $('#play').hide();
+            $('#pause').show();
+            $('#duration').fadeIn('400');
+            showDuration();
+            if (newSong == true) {
+                resetDuration();
+            }
+            newSong = false;
         }
-    })
-}
-function resetDuration(){
-    $('#lineColor').width(0);
-}
-function play(){
-    oldAudio.pause();
-    newAudio.play();
-    $('#play').hide();
-    $('#pause').show();
-    $('#duration').fadeIn('400');
-    showDuration();
-    if(newSong == true){
-        resetDuration();
+
+        function pause() {
+            newAudio.pause();
+            $('#pause').hide();
+            $('#play').show();
+            $('#duration').fadeIn('400');
+        }
+
+        function prev() {
+            newAudio.pause();
+            var prev = $('#playlist .song.active').prev();
+            if (prev.length == 0) {
+                prev = $('#playlist .song:last-child');
+            }
+            playMusic(prev);
+            newAudio.play();
+            $('#pause').show();
+            $('#play').hide();
+            showDuration();
+        }
+
+        function next() {
+            newAudio.pause();
+            var next = $('#playlist .song.active').next();
+            if (next.length == 0) {
+                next = $('#playlist .song:first-child');
+            }
+            playMusic(next);
+            newAudio.play();
+            $('#pause').show();
+            $('#play').hide();
+            showDuration();
+        }
+
+        $('#buttonBox .button').on('click', function() {
+            var btn = $(this).attr('id');
+            switch (btn) {
+                case 'prev':
+                    prev();
+                    break;
+                case 'play':
+                    play();
+                    break;
+                case 'pause':
+                    pause();
+                    break;
+                case 'next':
+                    next();
+                    break;
+                default:
+                    console.log('upssss!')
+            }
+        })
+        $('#playlist .song').click(playMusic);
+        if (forum.isMobile) {
+            $('#playlist .song').click(function() {
+                $('#playlist').slideUp();
+                document.querySelector('body').style.overflow = 'visible';
+                document.querySelector('.hamburger-menu').style.opacity = 1;
+            });
+        }
+        $('#playListButton').click(function() {
+            $('#playlist').slideDown();
+            document.querySelector('body').style.overflow = 'hidden';
+            document.querySelector('.hamburger-menu').style.opacity = 0;
+        })
+        $('#volume').change(function() {
+            newAudio.volume = parseFloat(this.value / 100);
+        })
+        $('#lineTime').click(function(e) {
+            var width = $(this).width();
+            var momentOfSong = e.clientX;
+            var start = $('#lineColor').offset().left;
+            //change width of progressBar
+            $('#lineColor').width(momentOfSong - start);
+
+            //change second of song
+            var procent = ((momentOfSong - start) / width);
+            newAudio.currentTime = Math.floor(procent * newAudio.duration);
+        })
+    },
+    main_gallery: {
+        modal: '',
+        modalFoto: '',
+        closeFoto: '',
+        imgsGalleryBox: '',
+        move_photo: '',
+        picture_from_gallery: "",
+        init: function() {
+            var self = forum.main_gallery;
+            self.modal = document.querySelector('#modal');
+            self.modalFoto = document.querySelector('#modalFoto');
+            self.closeFoto = document.querySelectorAll('#closeFoto, .back');
+            self.imgsGalleryBox = document.querySelectorAll('#galleryBox img, #carBox img');
+            self.move_photo = document.querySelectorAll('.move_photo');
+
+            self.imgsGalleryBox.forEach(function(img) {
+                img.addEventListener('click', self.showPicture);
+            })
+            self.move_photo.forEach(function(dir) {
+                dir.addEventListener('click', self.change_picture);
+            })
+            self.closeFoto.forEach(function(close) {
+                close.addEventListener('click', function() {
+                    self.modal.classList.remove('show_modal');
+                })
+            })
+        },
+        showPicture: function() {
+            var self = forum.main_gallery;
+            self.picture_from_gallery = this;
+            var img_src = self.picture_from_gallery.getAttribute('data-src-big');
+            self.modal.classList.add('show_modal');
+            self.modalFoto.src = img_src;
+        },
+        change_picture: function() {
+            var direction = this.getAttribute('data-src-direction');
+            var new_img;
+            var self = forum.main_gallery;
+            var main_picture = self.picture_from_gallery;
+            if (direction == "left") {
+                if (main_picture) {
+                    new_img = main_picture.previousElementSibling
+                } else {
+                    new_img = self.imgsGalleryBox[self.imgsGalleryBox.length - 1];
+                }
+            } else if (direction == "right") {
+                if (main_picture) {
+                    new_img = main_picture.nextElementSibling;
+                } else {
+                    new_img = self.imgsGalleryBox[0];
+                }
+
+            }
+            self.picture_from_gallery = new_img;
+            self.modalFoto.src = new_img.getAttribute('data-src-big');
+        }
+    },
+    mainSlider: {
+        images: "",
+        currentPhoto: 1,
+        sliderMainFoto: '',
+        init: function() {
+            var me = forum.mainSlider;
+            me.sliderMainFoto = document.querySelector('.sliderMainFoto');
+            me.showPhoto(me.currentPhoto);
+            me.add_event_click();
+        },
+        add_event_click: function() {
+            var arrows = document.querySelectorAll('.arrow_move');
+            arrows.forEach(function(arrow) {
+                arrow.addEventListener('click', forum.mainSlider.change_photo);
+            })
+        },
+        change_photo: function(e) {
+            var me = forum.mainSlider;
+            var direction = e.target.dataset.move;
+            var current = me.currentPhoto;
+            var last = 5;
+            if (direction == "right") {
+                current == last ? current = 1 : current++;
+            } else if (direction == "left") {
+                current == 1 ? current = last : current--;
+            }
+            me.currentPhoto = current;
+            me.showPhoto(current);
+        },
+        showPhoto: function(number) {
+            forum.mainSlider.sliderMainFoto.style.background = "url('../img/slider/slider" + number + ".jpg')";
+        }
+    },
+    turnOnLazyLoadObservers: function() {
+        var allImages = document.querySelectorAll("img[data-src],source[data-srcset]");
+        var fadeInPhotoMainGallery = document.querySelector('#galleryBox');
+        var fadeInPhotoCarGallery = document.querySelector('#car');
+        var animateSections = document.querySelectorAll('.animate-section');
+
+        forum.myObserver(allImages, forum.load, false);
+        forum.myObserver(fadeInPhotoMainGallery, forum.fadeInGalleryElement.bind(this, 'main'), false);
+        forum.myObserver(fadeInPhotoCarGallery, forum.fadeInGalleryElement.bind(this, 'car'), false);
+        forum.myObserver(animateSections, forum.showSection, false);
+    },
+    fadeInGalleryElement: function(typeOfGallery) {
+        let target = '';
+        if (typeOfGallery === 'main') {
+            target = '#galleryBox img';
+        } else if (typeOfGallery === 'car') {
+            target = '#carBox .gallery_photo';
+        }
+        document.querySelectorAll(target).forEach(function(img, i) {
+            setTimeout(function() {
+                img.classList.add('show_gallery_box__photo');
+            }, 150 * i);
+
+        })
+    },
+    showSection: function(element) {
+        element.style.opacity = 1;
+    },
+    myObserver: function(targets, viewPortIn, viewPortOut, rootMargin = '1px') {
+        var target = Array.from(targets);
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.intersectionRatio > 0) {
+                    viewPortIn(entry.target);
+                    if (viewPortOut == false) {
+                        observer.unobserve(entry.target);
+                    }
+                } else {
+                    if (viewPortOut != false) {
+                        viewPortOut();
+                    }
+                    return true;
+                }
+            });
+        }, {
+            rootMargin: rootMargin,
+            threshold: 0.01
+        });
+        if (target.length > 1) {
+            target.forEach(function(el) {
+                observer.observe(el);
+            });
+        } else {
+            observer.observe(targets)
+        }
+    },
+    load: function(el) {
+        if (el.getAttribute('data-src')) {
+            el.src = el.getAttribute('data-src');
+        }
+    },
+    mobileGallery: function(target) {
+        const C = document.querySelector(target); //container
+        const N = C.children.length; //number of picture
+        let i = 0; //current picture
+        let x0 = null;
+        let locked = false;
+
+        C.style.setProperty('--n', N);
+
+        C.addEventListener('mousedown', lock, false);
+        C.addEventListener('touchstart', lock, false);
+
+        C.addEventListener('mousemove', drag, false);
+        C.addEventListener('touchmove', drag, false);
+
+        C.addEventListener('mouseup', move, false);
+        C.addEventListener('touchend', move, false);
+
+        function unify(e) {
+            return e.changedTouches ? e.changedTouches[0] : e;
+        };
+
+        function lock(e) {
+            // const self = forum.mobileGallery;
+            x0 = unify(e).clientX;
+            C.classList.toggle('smooth', !(locked = true))
+        };
+
+        function drag(e) {
+            // const self = forum.mobileGallery;
+            e.preventDefault();
+            if (locked)
+                C.style.setProperty('--tx', `${Math.round(unify(e).clientX - x0)}px`)
+        };
+
+        function move(e) {
+            // const self = forum.mobileGallery;
+            if (locked) {
+                let dx = unify(e).clientX - x0,
+                    s = Math.sign(dx);
+
+                if ((i > 0 || s < 0) && (i < N - 1 || s > 0))
+                    C.style.setProperty('--i', i -= s);
+                C.style.setProperty('--tx', '0px');
+                C.classList.toggle('smooth', !(locked = false));
+                x0 = null
+            }
+        }
     }
-    newSong = false;
-}
-function pause(){
-    newAudio.pause();
-    $('#pause').hide();
-    $('#play').show();
-    $('#duration').fadeIn('400');
-}
-function prev(){
-    newAudio.pause();
-    var prev = $('#playlist .song.active').prev();
-    if(prev.length == 0){
-        prev = $('#playlist .song:last-child');
-    }
-    playMusic(prev);
-    newAudio.play();
-    $('#pause').show();
-    $('#play').hide();
-    showDuration();
-}
-function next(){
-    newAudio.pause();
-    var next = $('#playlist .song.active').next();
-    if(next.length ==0){
-        next = $('#playlist .song:first-child');
-    }
-    playMusic(next);
-    newAudio.play();
-    $('#pause').show();
-    $('#play').hide();
-    showDuration();
 }
 
-$('#buttonBox .button').on('click', function(){
-    var btn = $(this).attr('id');
-    switch(btn){
-        case 'prev':
-        prev();
-        break;
-        case 'play':
-        play();
-        break;
-        case 'pause':
-        pause();
-        break;
-        case 'next':
-        next();
-        break;
-        default:
-        console.log('upssss!')
-    }
-})
-$('#playlist .song').click(playMusic);
-$('#playListButton').click(function(){
-    $('#playlist').slideDown();
-})
-
-$('#backPlayList').click(function(){
-    $('#playlist').slideUp();
-})
-$('#volume').change(function(){
-    newAudio.volume = parseFloat(this.value / 100);
-})
-$('#lineTime').click(function(e){
-    var width = $(this).width();
-    var momentOfSong = e.clientX;
-    var start = $('#lineColor').offset().left;
-    //change width of progressBar
-    $('#lineColor').width(momentOfSong-start);
-
-    //change second of song
-    var procent = ((momentOfSong-start)/width);
-    newAudio.currentTime = Math.floor(procent*newAudio.duration);
-})
-
-
-//----------------------  Gallery ----------------------
-
-var picture = "";
-var $gallery = $('#galleryBox img');
-
-function show(){
-    var self = $(this);
-    var img = self.attr('data-src');
-    // console.log(img)
-    // var title = self.attr('alt');
-    picture = self;
-
-    $('#modalFoto').attr('src',img);
-    // $('#captionFoto').text(title)
-    $('#modal').fadeIn(300);
-}
-
-function show2(element){
-    var img = $(element).attr('data-src');
-    // var title = $(element).attr('alt');
-    picture = $(element);
-    $('#modalFoto').attr('src',img);
-    // $('#captionFoto').text(title)
-    $('#modal').fadeIn(300);
-}
-
-if(!isMobile){
-    $('#galleryBox img').click(show);
-    $('#carBox img').click(show);
-}
-
-
-$('#prevFoto').on('click', function(){
-    var prev = picture.prev();
-    if(prev.length == 0){
-        prev = $gallery.eq(($gallery.length)-1);
-    }
-    show2(prev);
-})
-
-$('#nextFoto').on('click', function(){
-    var next = picture.next();
-    if(next.length == 0){
-        next = $gallery.eq(0);
-    }
-    show2(next);
-})
-
-$('#closeFoto').on('click', function(){
-    $('#modal').fadeOut();
-})
-
-$('.back').on('click', function(){
-    $(this).parent().fadeOut();
-})
+forum.init();
