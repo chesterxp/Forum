@@ -386,19 +386,48 @@ var forum = {
     init: function() {
         this.isMobile = this.checkDevice();
         this.animateAllLinks();
-        this.audioPlayer();
+        // this.audioPlayer();
         this.turnOnLazyLoadObservers();
         this.mainSlider.init();
 
         if (this.isMobile) {
-            document.querySelector('#volume2').style.display = 'none';
             this.hamburgerButton();
             this.mobileGallery('#galleryBox');
             this.mobileGallery('#carBox');
         } else {
             this.main_gallery.init();
         }
+
+        this.audioPlayer();
+        this.addBackground.init(this.isMobile);
     },
+    addBackground: {
+        init: function(isMobile){
+            if (isMobile){
+                return false;
+            }
+
+            const nav = document.querySelector('#nav');
+            const self = forum.addBackground;
+    
+            setInterval(self.checkposition, 500, nav);
+        },
+        checkposition: function(nav){
+            const currentScroll = window.scrollY;
+            const self = forum.addBackground;
+
+            if(currentScroll > 300){
+                self.toggleClassForNavigation(nav, 'add');
+            } else{
+                self.toggleClassForNavigation(nav, 'remove');
+            }
+        },
+        toggleClassForNavigation(nav, change){
+            nav.classList[change]('backgroundOn');
+        }
+
+    },
+    
     checkDevice: function() {
         let windowWidth = document.body.clientWidth;
         if (windowWidth < 801) {
@@ -441,188 +470,6 @@ var forum = {
                 if (step == 1) clearInterval(timer);
             }, 25);
         elem.style[style] = from + unit;
-    },
-    audioPlayer: function() {
-        $('#pause').hide();
-
-        var newAudio = new Audio('audio/Track-01.mp3');
-        var oldAudio = new Audio('audio/Track-01.mp3');
-        var newSong = false;
-        var startPlay = false;
-
-
-        //first song init
-        playMusic($('#playlist .song').eq(0));
-
-        function playMusic(element) {
-
-            if (element.length > 0) {
-                var self = $(element);
-            } else {
-                var self = $(this);
-            }
-            var song = self.attr('song'),
-                title = self.find('.titleOfSong').text(),
-                band = self.find('.artist').text(),
-                time = self.find('.time').text(),
-                foto = self.attr('foto'),
-                url = 'url(./img/small/' + foto + ')';
-            oldAudio = newAudio;
-
-            $(' #fullTime').text(time);
-            $('.titleBox .title').text(title);
-            $('.titleBox .band').text(band);
-            $('#songFoto').css('background', url);
-
-            newAudio = new Audio('audio/' + song);
-            $('#playlist .song').removeClass('active');
-            self.addClass('active');
-            $('#pause').show();
-            $('#play').hide();
-
-            //dont start playing after reload page
-            if (startPlay == true) {
-                oldAudio.pause();
-                newAudio.play();
-            } else {
-                $('#pause').hide();
-                $('#play').show();
-            }
-            startPlay = true;
-
-            showDuration();
-
-            if ($('body').is('.mobile')) {
-                $('#playlist').hide(500);
-            }
-            //dont change progresBar within playing song
-            newSong == true;
-        }
-
-        function showDuration() {
-            $(newAudio).bind('timeupdate', function() {
-                var s = parseInt(newAudio.currentTime % 60);
-                var m = parseInt((newAudio.currentTime / 60) % 60);
-                var a = 0;
-                if (s < 10) {
-                    s = "0" + s;
-                }
-                if (m < 10) {
-                    m = "0" + m;
-                }
-                $('#duration').html(m + ":" + s);
-                var fullTime = parseFloat(newAudio.duration / 60, 10);
-                var minutes = parseFloat(newAudio.duration / 60, 10);
-                var secound = (newAudio.duration % 100);
-                var value = 0;
-
-                if (newAudio.currentTime > 0) {
-                    value = Math.floor((100 / newAudio.duration) * newAudio.currentTime);
-                }
-
-                $('#lineColor').css('width', value + '%');
-                if (newAudio.currentTime == newAudio.duration) {
-                    next();
-                }
-            })
-        }
-
-        function resetDuration() {
-            $('#lineColor').width(0);
-        }
-
-        function play() {
-            oldAudio.pause();
-            newAudio.play();
-            $('#play').hide();
-            $('#pause').show();
-            $('#duration').fadeIn('400');
-            showDuration();
-            if (newSong == true) {
-                resetDuration();
-            }
-            newSong = false;
-        }
-
-        function pause() {
-            newAudio.pause();
-            $('#pause').hide();
-            $('#play').show();
-            $('#duration').fadeIn('400');
-        }
-
-        function prev() {
-            newAudio.pause();
-            var prev = $('#playlist .song.active').prev();
-            if (prev.length == 0) {
-                prev = $('#playlist .song:last-child');
-            }
-            playMusic(prev);
-            newAudio.play();
-            $('#pause').show();
-            $('#play').hide();
-            showDuration();
-        }
-
-        function next() {
-            newAudio.pause();
-            var next = $('#playlist .song.active').next();
-            if (next.length == 0) {
-                next = $('#playlist .song:first-child');
-            }
-            playMusic(next);
-            newAudio.play();
-            $('#pause').show();
-            $('#play').hide();
-            showDuration();
-        }
-
-        $('#buttonBox .button').on('click', function() {
-            var btn = $(this).attr('id');
-            switch (btn) {
-                case 'prev':
-                    prev();
-                    break;
-                case 'play':
-                    play();
-                    break;
-                case 'pause':
-                    pause();
-                    break;
-                case 'next':
-                    next();
-                    break;
-                default:
-                    console.log('upssss!')
-            }
-        })
-        $('#playlist .song').click(playMusic);
-        if (forum.isMobile) {
-            $('#playlist .song').click(function() {
-                $('#playlist').slideUp();
-                document.querySelector('body').style.overflow = 'visible';
-                document.querySelector('.hamburger-menu').style.opacity = 1;
-            });
-        }
-        $('#playListButton').click(function() {
-            $('#playlist').slideDown();
-            document.querySelector('body').style.overflow = 'hidden';
-            document.querySelector('.hamburger-menu').style.opacity = 0;
-        })
-        $('#volume').change(function() {
-            newAudio.volume = parseFloat(this.value / 100);
-        })
-        $('#lineTime').click(function(e) {
-            var width = $(this).width();
-            var momentOfSong = e.clientX;
-            var start = $('#lineColor').offset().left;
-            //change width of progressBar
-            $('#lineColor').width(momentOfSong - start);
-
-            //change second of song
-            var procent = ((momentOfSong - start) / width);
-            newAudio.currentTime = Math.floor(procent * newAudio.duration);
-        })
     },
     main_gallery: {
         modal: '',
@@ -823,6 +670,370 @@ var forum = {
                 x0 = null
             }
         }
+    },
+    audioPlayer: function(){
+        const trackList = [
+            {
+                artist: 'z repertuaru Kombi',
+                titleOfSong: 'Kochać Cię za późno',
+                src: '/audio/Track-01.mp3',
+                fullTime: '04:21'
+            },
+            {
+                artist: 'z repertuaru Gossip',
+                titleOfSong: 'Move in the Right Direction',
+                src: '/audio/Track-30.mp3',
+                fullTime: '03:17'
+            },
+            {
+                artist: 'z repertuaru Dystans',
+                titleOfSong: 'Co za noc',
+                src: '/audio/Track-28.mp3',
+                fullTime: '03:18'
+            },
+            {
+                artist: 'z repertuaru A. Rusowicz',
+                titleOfSong: 'Za daleko mieszkasz miły',
+                src: '/audio/Track-27.mp3',
+                fullTime: '02:33'
+            },
+            {
+                artist: 'z repertuaru Weekend',
+                titleOfSong: 'Ona i on',
+                src: '/audio/Track-03.mp3',
+                fullTime: '04:33'
+            },
+            {
+                artist: 'piosenka ukraińska',
+                titleOfSong: 'Oj Smereko',
+                src: '/audio/Track-25.mp3',
+                fullTime: '03:22'
+            },
+            {
+                artist: 'z repertuaru De Mono',
+                titleOfSong: 'Statki na niebie',
+                src: '/audio/Track-14.mp3',
+                fullTime: '03:43'
+            },
+            {
+                artist: 'z repertuaru Amna',
+                titleOfSong: 'Tell Me Why',
+                src: '/audio/Track-29.mp3',
+                fullTime: 'Tell Me Why'
+            },
+            {
+                artist: 'z repertuaru Masters',
+                titleOfSong: 'Szukam dziewczyny',
+                src: '/audio/Track-09.mp3',
+                fullTime: '03:29'
+            },
+            {
+                artist: 'repertuaru Tiny Turner',
+                titleOfSong: 'Simply the best',
+                src: '/audio/Track-02.mp3',
+                fullTime: '04:02'
+            },
+            {
+                artist: 'repertuaru For Teens',
+                titleOfSong: 'Jesteś częścią mnie',
+                src: '/audio/Track-19.mp3',
+                fullTime: '03:48'
+            },
+            {
+                artist: 'z repertuaru Anny Jantar',
+                titleOfSong: 'Wielka dama',
+                src: '/audio/Track-06.mp3',
+                fullTime: '03:51'
+            },
+            {
+                artist: 'z repertuaru Loka',
+                titleOfSong: 'Prawdziwe powietrze',
+                src: '/audio/Track-07.mp3',
+                fullTime: '02:57'
+            },
+            {
+                artist: 'z repertuaru Samanthy Fox',
+                titleOfSong: 'Touch me',
+                src: '/audio/Track-08.mp3',
+                fullTime: '03:41'
+            },
+            {
+                artist: 'z repertuaru Varius Manx',
+                titleOfSong: 'Ruchome piaski',
+                src: '/audio/Track-04.mp3',
+                fullTime: '04:42'
+            },
+            {
+                artist: 'z repertuaru Czarno Czarni',
+                titleOfSong: 'Nogi',
+                src: '/audio/Track-16.mp3',
+                fullTime: '03:00'
+            },
+            {
+                artist: 'wersja Maryli Rodowicz',
+                titleOfSong: 'Kolorowe jarmarki',
+                src: '/audio/Track-26.mp3',
+                fullTime: '04:09'
+            },
+            {
+                artist: 'z repertuaru Adama',
+                titleOfSong: 'Zanim wstanie dzień',
+                src: '/audio/Track-17.mp3',
+                fullTime: '04:14'
+            },
+            {
+                artist: 'z repertuaru Kasi Sobczyk',
+                titleOfSong: 'Trzynastego',
+                src: '/audio/Track-10.mp3',
+                fullTime: '03:19'
+            },
+            {
+                artist: 'z repertuaru Tarzan Boy',
+                titleOfSong: 'Promienie',
+                src: '/audio/Track-20.mp3',
+                fullTime: '04:13'
+            },
+            {
+                artist: 'z repertuaru ludowego',
+                titleOfSong: 'Marysiu buzi daj',
+                src: '/audio/Track-15.mp3',
+                fullTime: '03:25'
+            },
+            {
+                artist: 'z repertuaru Czerwone Gitary',
+                titleOfSong: 'Słowo jedyne Ty',
+                src: '/audio/Track-11.mp3',
+                fullTime: '02:47'
+            },
+            {
+                artist: 'z repertuaru Maryli Rodowicz',
+                titleOfSong: 'Małgośka',
+                src: '/audio/Track-13.mp3',
+                fullTime: '02:59'
+            },
+            {
+                artist: 'z repertuaru Emigranci',
+                titleOfSong: 'Na falochronie',
+                src: '/audio/Track-21.mp3',
+                fullTime: '04:27'
+            },
+            {
+                artist: 'z repertuaru Maryli Rodowicz',
+                titleOfSong: 'Weselne dzieci',
+                src: '/audio/Track-18.mp3',
+                fullTime: 'Weselne dzieci'
+            },
+            {
+                artist: 'z repertuaru Lider',
+                titleOfSong: 'Moja Gitara',
+                src: '/audio/Track-12.mp3',
+                fullTime: '04:25'
+            },
+            {
+                artist: 'z repertuaru De Mono',
+                titleOfSong: 'Dla zakochanych',
+                src: '/audio/Track-23.mp3',
+                fullTime: '04:08'
+            },
+            {
+                artist: 'z repertuaru Kancelaria',
+                titleOfSong: 'Zabiore Cie',
+                src: '/audio/Track-22.mp3',
+                fullTime: '05:21'
+            },
+            {
+                artist: 'z repertuaru Darko Damiana',
+                titleOfSong: 'Żono Moja',
+                src: '/audio/Track-24.mp3',
+                fullTime: '03:51'
+            }
+        ];
+        let currentAudio = 0;
+        let myAudio = document.createElement('audio');
+        let playerPhotoBox;
+        let playerTitleBox;
+        let actualDurationTimeBox;
+        let fullTimeOfSongBox;
+        let durationLineBox;
+        let durtionLine; 
+        let listOfSongsBox;
+        let songsFromTheList;
+        let playerInitialization = true;
+        let body;
+
+        function init(){
+            const play = document.querySelector('#play');
+            const pause = document.querySelector('#pause');
+            const next = document.querySelector('#next');
+            const prev = document.querySelector('#prev');
+            const trackListLength = trackList.length;
+            const showListButtonMobile = document.querySelector('#playListButton');
+
+            body = document.querySelector('body');
+            listOfSongsBox = document.querySelector('#playlist');
+            songsFromTheList = listOfSongsBox.querySelectorAll('.song');
+            actualDurationTimeBox = document.querySelector('#duration');
+            fullTimeOfSongBox = document.querySelector('#fullTime');
+            durationLineBox = document.querySelector('.lineColorBox');
+            durtionLine = document.querySelector('.lineColor');
+            playerPhotoBox = document.querySelector('#songFoto');
+            playerTitleBox = document.querySelector('.titleBox .title');
+
+            setActualSong(currentAudio);
+            turnOnSong();
+
+            //basic buttons
+            play.addEventListener('click', ()=>{
+                myAudio.play();
+            })
+            pause.addEventListener('click', ()=>{
+                myAudio.pause();
+            })
+            next.addEventListener('click', ()=>{
+                changeNamberOfSong('next',trackListLength);
+                turnOnSong();
+            })
+            prev.addEventListener('click', ()=>{
+                changeNamberOfSong('prev',trackListLength);
+                turnOnSong();
+            })
+
+            //additional functions
+            addMoveSongEvent();
+            addEventForSelectSong();
+            playNextSong(trackListLength);
+
+            showListButtonMobile.addEventListener('click', showlistOfSongs)
+            
+        };
+        //set default song
+        function setActualSong(number){
+            currentAudio = number;
+
+            if (myAudio.canPlayType('audio/mp3')) {
+                myAudio.setAttribute('src',trackList[number].src);
+            }
+        }
+        //change song
+        function changeNamberOfSong(type, lengthOfList){
+            if(type === 'next'){
+                currentAudio += 1;
+            } else{
+                currentAudio -= 1;
+            }
+
+            if(currentAudio === lengthOfList){
+                currentAudio = 0;
+            } else if(currentAudio === -1){
+                currentAudio = lengthOfList-1;
+            }
+            if (myAudio.canPlayType('audio/mp3')) {
+                myAudio.setAttribute('src',trackList[(currentAudio)].src);
+            }
+        }
+        //turn on all mechanism
+        function turnOnSong(){
+            changeTimeOfSong();
+            getFullTimeOfSong();
+            changePlayerPhoto();
+            changePlayerTitle();
+            changeClassOfSongAtList();
+
+            if(!playerInitialization){
+                myAudio.play();
+            }
+            playerInitialization = false;
+        }
+        function changeTimeOfSong(){
+            myAudio.addEventListener("timeupdate", function() {
+                var currentTime = myAudio.currentTime;
+                var durationTime = myAudio.duration;
+                var minutes = '00';
+                var second = '00';
+                var time = parseInt(currentTime/60, 0);
+                var reszta = parseInt(currentTime % 60, 0);
+                const currentSongTime = parseInt(((currentTime / durationTime) * 100), 10);
+            
+                if(currentTime < 60){
+                    minutes = '00';
+                    if(currentTime < 10){
+                        second = '0' + parseInt(currentTime, 0);
+                    } else{
+                        second = parseInt(currentTime, 0);
+                    }
+                } else{
+                    if(time < 10){
+                        minutes = '0' + time;
+                        if(reszta < 10){
+                            second = '0' + reszta;
+                        } else{
+                            second = reszta;
+                        }
+                    } else{
+                        minutes = 'time';
+                    }
+                }
+
+                actualDurationTimeBox.innerHTML = minutes + ':' + second;
+                durtionLine.style.width = currentSongTime + "%";
+            });
+        }
+        function getFullTimeOfSong(){
+            fullTimeOfSongBox.innerHTML = trackList[currentAudio].fullTime;
+        }
+        function changePlayerPhoto(){
+            const number = randomNumber(39)
+            playerPhotoBox.style.backgroundImage = `url('./img/small/foto${number}.jpg')`;
+        }
+        function randomNumber(max){
+            return Math.floor(Math.random() * max);
+        }
+        function changePlayerTitle(){
+            playerTitleBox.innerText = trackList[currentAudio].titleOfSong;
+        }
+        function changeClassOfSongAtList(){
+            for(let i = 0;i < songsFromTheList.length; i++){
+                songsFromTheList[i].classList.remove('active');
+            }
+            songsFromTheList[currentAudio].classList.add('active');
+        }
+        //additional functions
+        function addMoveSongEvent(){
+            durationLineBox.addEventListener('click', moveTrack.bind(this));
+        }
+        function moveTrack(e){
+            var widthOfBox = durationLineBox.offsetWidth;
+            var procent = (e.offsetX/widthOfBox);
+
+            durtionLine.style.width = e.offsetX + 'px';
+            myAudio.currentTime = myAudio.duration * procent;
+        }
+        function addEventForSelectSong(){
+            for(let i = 0; i < songsFromTheList.length; i++){
+                songsFromTheList[i].addEventListener('click', selectSong.bind(this));
+            }  
+        }
+        function selectSong(e){
+            if(e.target.classList[0] == 'song'){
+                const numberOfSong = e.target.dataset.song - 1;
+                // changeNamberOfSong(numberOfSong);
+                setActualSong(numberOfSong);
+                turnOnSong();
+                if(forum.isMobile){
+                    body.classList.remove('showPlayList')
+                }
+            }
+        }
+        function playNextSong(trackListLength){
+            myAudio.onended = function(){
+                changeNamberOfSong('next',trackListLength);
+                turnOnSong();
+            }
+        }
+        function showlistOfSongs(list){
+            body.classList.toggle('showPlayList')
+        }
+        init();
     }
 }
 

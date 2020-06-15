@@ -18,9 +18,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Zespół Muzyczny - FORUM</title>
     <link async href="https://fonts.googleapis.com/css?family=Lato:400,700&amp;subset=latin-ext" rel="stylesheet">
+
     <link rel="stylesheet" href="css/forum.min.css">
-    <script defer src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script defer src="js/forum.min.js"></script>
+    <link rel="icon"  type="image/jpg" href="./img/logo.jpg">
 
 </head>
 <body>
@@ -309,9 +310,11 @@
                             <div id="durationTime">
                                 <span id="duration">00:00</span>
                                 <span>/</span>
-                                <span id="fullTime"></span>
+                                <span id="fullTime">04:21</span>
                             </div>
-                            <div id="lineColor"></div>
+                            <div class="lineColorBox">
+                                <div class="lineColor"></div>
+                            </div>
                     </div>
             </div>
 
@@ -321,18 +324,12 @@
                 <div class="button" id="pause"></div>
                 <!-- <div class="button" id="stop"></div> -->
                 <div class="button" id="next"></div>
-                <div class="button" id="volume2">
-                    <div class="val">
-                            <input id="volume" type="range" min="0" max="100" value="100">
-                    </div>
-
-                </div>
             </div>
 
         </div>
 
     <div id="playlist">
-        <div class="song active" foto="foto1.jpg" song="Track-01.mp3">
+        <div class="song" foto="foto1.jpg" data-song="1">
             <div class="number">1</div>
             <div class="title">
                 <div class="artist">z repertuaru Kombi</div>
@@ -340,7 +337,7 @@
             </div>
             <div class="time">04:21</div>
         </div>
-        <div class="song " foto="foto2.jpg" song="Track-30.mp3">
+        <div class="song" foto="foto2.jpg" data-song="2">
             <div class="number">2</div>
             <div class="title">
                 <div class="artist">z repertuaru Gossip</div>
@@ -348,7 +345,7 @@
             </div>
             <div class="time">03:17</div>
         </div>
-        <div class="song " foto="foto3.jpg" song="Track-28.mp3">
+        <div class="song" foto="foto3.jpg" data-song="3">
             <div class="number">3</div>
             <div class="title">
                 <div class="artist">z repertuaru Dystans</div>
@@ -356,7 +353,7 @@
             </div>
             <div class="time">03:18</div>
         </div>
-        <div class="song " foto="foto4.jpg" song="Track-27.mp3">
+        <div class="song" foto="foto4.jpg" data-song="4">
             <div class="number">4</div>
             <div class="title">
                 <div class="artist">z repertuaru A. Rusowicz</div>
@@ -364,7 +361,7 @@
             </div>
             <div class="time">02:33</div>
         </div>
-        <div class="song " foto="foto5.jpg" song="Track-03.mp3">
+        <div class="song" foto="foto5.jpg" data-song="5">
             <div class="number">5</div>
             <div class="title">
                 <div class="artist">z repertuaru Weekend</div>
@@ -372,7 +369,7 @@
             </div>
             <div class="time">04:34</div>
         </div>
-        <div class="song " foto="foto6.jpg" song="Track-25.mp3">
+        <div class="song" foto="foto6.jpg" data-song="6">
             <div class="number">6</div>
             <div class="title">
                 <div class="artist">piosenka ukraińska</div>
@@ -380,7 +377,7 @@
             </div>
             <div class="time">03:22</div>
         </div>
-        <div class="song " foto="foto7.jpg" song="Track-14.mp3">
+        <div class="song" foto="foto7.jpg" data-song="7">
             <div class="number">7</div>
             <div class="title">
                 <div class="artist">z repertuaru De Mono</div>
@@ -388,7 +385,7 @@
             </div>
             <div class="time">03:43</div>
         </div>
-        <div class="song " foto="foto8.jpg" song="Track-29.mp3">
+        <div class="song" foto="foto8.jpg" data-song="8">
             <div class="number">8</div>
             <div class="title">
                 <div class="artist">z repertuaru Amna</div>
@@ -396,7 +393,7 @@
             </div>
             <div class="time">03:19</div>
         </div>
-        <div class="song " foto="foto9.jpg" song="Track-09.mp3">
+        <div class="song" foto="foto9.jpg" data-song="9">
             <div class="number">9</div>
             <div class="title">
                 <div class="artist">z repertuaru Masters</div>
@@ -404,7 +401,7 @@
             </div>
             <div class="time">03:29</div>
         </div>
-        <div class="song " foto="foto10.jpg" song="Track-02.mp3">
+        <div class="song" foto="foto10.jpg" data-song="10">
             <div class="number">10</div>
             <div class="title">
                 <div class="artist">repertuaru Tiny Turner</div>
@@ -412,7 +409,7 @@
             </div>
             <div class="time">04:02</div>
         </div>
-        <div class="song " foto="foto11.jpg" song="Track-19.mp3">
+        <div class="song" foto="foto11.jpg" data-song="11">
             <div class="number">11</div>
             <div class="title">
                 <div class="artist">repertuaru For Teens</div>
@@ -420,7 +417,7 @@
             </div>
             <div class="time">03:48</div>
         </div>
-        <div class="song " foto="foto12.jpg" song="Track-06.mp3">
+        <div class="song" foto="foto12.jpg" data-song="12">
             <div class="number">12</div>
             <div class="title">
                 <div class="artist">z repertuaru Anny Jantar</div>
@@ -428,7 +425,7 @@
             </div>
             <div class="time">03:51</div>
         </div>
-        <div class="song " foto="foto13.jpg" song="Track-07.mp3">
+        <div class="song" foto="foto13.jpg" data-song="13">
             <div class="number">13</div>
             <div class="title">
                 <div class="artist">z repertuaru Loka</div>
@@ -436,7 +433,7 @@
             </div>
             <div class="time">02:57</div>
         </div>
-        <div class="song " foto="foto14.jpg" song="Track-08.mp3">
+        <div class="song" foto="foto14.jpg" data-song="14">
             <div class="number">14</div>
             <div class="title">
                 <div class="artist">z repertuaru Samanthy Fox</div>
@@ -444,7 +441,7 @@
             </div>
             <div class="time">03:41</div>
         </div>
-        <div class="song " foto="foto15.jpg" song="Track-04.mp3">
+        <div class="song" foto="foto15.jpg" data-song="15">
             <div class="number">15</div>
             <div class="title">
                 <div class="artist">z repertuaru Varius Manx</div>
@@ -452,7 +449,7 @@
             </div>
             <div class="time">04:42</div>
         </div>
-        <div class="song " foto="foto16.jpg" song="Track-16.mp3">
+        <div class="song" foto="foto16.jpg" data-song="16">
             <div class="number">16</div>
             <div class="title">
                 <div class="artist">z repertuaru Czarno Czarni</div>
@@ -460,7 +457,7 @@
             </div>
             <div class="time">03:00</div>
         </div>
-        <div class="song " foto="foto17.jpg" song="Track-26.mp3">
+        <div class="song" foto="foto17.jpg" data-song="17">
             <div class="number">17</div>
             <div class="title">
                 <div class="artist">wersja Maryli Rodowicz</div>
@@ -468,7 +465,7 @@
             </div>
             <div class="time">04:09</div>
         </div>
-        <div class="song " foto="foto18.jpg" song="Track-17.mp3">
+        <div class="song" foto="foto18.jpg" data-song="18">
             <div class="number">18</div>
             <div class="title">
                 <div class="artist">z repertuaru Adama</div>
@@ -476,7 +473,7 @@
             </div>
             <div class="time">04:14</div>
         </div>
-        <div class="song " foto="foto19.jpg" song="Track-10.mp3">
+        <div class="song" foto="foto19.jpg" data-song="19">
             <div class="number">19</div>
             <div class="title">
                 <div class="artist">z repertuaru Kasi Sobczyk</div>
@@ -484,7 +481,7 @@
             </div>
             <div class="time">03:19</div>
         </div>
-        <div class="song " foto="foto20.jpg" song="Track-20.mp3">
+        <div class="song" foto="foto20.jpg" data-song="20">
             <div class="number">20</div>
             <div class="title">
                 <div class="artist">z repertuaru Tarzan Boy</div>
@@ -492,7 +489,7 @@
             </div>
             <div class="time">04:13</div>
         </div>
-        <div class="song " foto="foto21.jpg" song="Track-15.mp3">
+        <div class="song" foto="foto21.jpg" data-song="21">
             <div class="number">21</div>
             <div class="title">
                 <div class="artist">z repertuaru ludowego</div>
@@ -500,7 +497,7 @@
             </div>
             <div class="time">03:25</div>
         </div>
-        <div class="song " foto="foto22.jpg" song="Track-11.mp3">
+        <div class="song" foto="foto22.jpg" data-song="22">
             <div class="number">22</div>
             <div class="title">
                 <div class="artist">z repertuaru Czerwone Gitary</div>
@@ -508,7 +505,7 @@
             </div>
             <div class="time">02:47</div>
         </div>
-        <div class="song " foto="foto23.jpg" song="Track-13.mp3">
+        <div class="song" foto="foto23.jpg" data-song="23">
             <div class="number">23</div>
             <div class="title">
                 <div class="artist">z repertuaru Maryli Rodowicz</div>
@@ -516,7 +513,7 @@
             </div>
             <div class="time">02:59</div>
         </div>
-        <div class="song " foto="foto24.jpg" song="Track-21.mp3">
+        <div class="song" foto="foto24.jpg" data-song="24">
             <div class="number">24</div>
             <div class="title">
                 <div class="artist">z repertuaru Emigranci</div>
@@ -524,7 +521,7 @@
             </div>
             <div class="time">04:27</div>
         </div>
-        <div class="song " foto="foto25.jpg" song="Track-18.mp3">
+        <div class="song" foto="foto25.jpg" data-song="25">
             <div class="number">25</div>
             <div class="title">
                 <div class="artist">z repertuaru Maryli Rodowicz</div>
@@ -532,7 +529,7 @@
             </div>
             <div class="time">03:48</div>
         </div>
-        <div class="song " foto="foto26.jpg" song="Track-12.mp3">
+        <div class="song" foto="foto26.jpg" data-song="26">
             <div class="number">26</div>
             <div class="title">
                 <div class="artist">z repertuaru Lider</div>
@@ -540,7 +537,7 @@
             </div>
             <div class="time">04:25</div>
         </div>
-        <div class="song " foto="foto27.jpg" song="Track-23.mp3">
+        <div class="song" foto="foto27.jpg" data-song="27">
             <div class="number">27</div>
             <div class="title">
                 <div class="artist">z repertuaru De Mono</div>
@@ -548,7 +545,7 @@
             </div>
             <div class="time">04:08</div>
         </div>
-        <div class="song " foto="foto28.jpg" song="Track-22.mp3">
+        <div class="song" foto="foto28.jpg" data-song="28">
             <div class="number">28</div>
             <div class="title">
                 <div class="artist">z repertuaru Kancelaria</div>
@@ -556,7 +553,7 @@
             </div>
             <div class="time">05:21</div>
         </div>
-        <div class="song " foto="foto29.jpg" song="Track-24.mp3">
+        <div class="song" foto="foto29.jpg" data-song="29">
             <div class="number">29</div>
             <div class="title">
                 <div class="artist">z repertuaru Darko Damiana</div>
@@ -627,7 +624,7 @@
 
 <div id="footer" >
     <div id="copywrite">
-        Zespół Muzyczny - FORUM © 2019 Designed By <span class="author">
+        Zespół Muzyczny - FORUM © 2020 Designed By <span class="author">
             <a href="https://lukasz.netlify.com/">LukDev</a>
         </span>
     </div>

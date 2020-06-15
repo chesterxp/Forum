@@ -187,16 +187,17 @@ body::-webkit-scrollbar-thumb {
 
 #nav {
     display: flex;
-    background: #333;
+    background-color: rgba(51, 51, 51, 0.0);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
     top: -1px;
     position: fixed;
     width: 100%;
     z-index: 100;
+    transition: all 0.6s ease-out;
 
     &.showNavBox {
         .navBox {
-            transform: translateX(0);
+            transform: translateY(0);
             opacity: 1;
         }
 
@@ -229,6 +230,7 @@ body::-webkit-scrollbar-thumb {
         font-size: 20px;
         padding: 20px;
         color: #fff;
+        text-shadow: 2px 2px #000;
     }
 
     .hamburger-menu {
@@ -237,7 +239,7 @@ body::-webkit-scrollbar-thumb {
         position: absolute;
         top: 7px;
         right: 20px;
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale(0.75);
         transition: .5s ease-in-out;
         cursor: pointer;
 
@@ -270,7 +272,7 @@ body::-webkit-scrollbar-thumb {
 
     .navBox {
         display: flex;
-        transform: translateX(100%);
+        transform: translateY(-150%);
         flex-direction: column;
         z-index: 10;
         background: linear-gradient(to top right, rgba(0, 0, 0, 0.93), rgba(51, 51, 51, 0.86));
@@ -710,13 +712,19 @@ body::-webkit-scrollbar-thumb {
                 background: rgb(255, 255, 255);
                 position: relative;
 
-                #lineColor {
-                    width: 0%;
+                .lineColorBox {
+                    width: 100%;
                     height: 7px;
+                    background: rgb(248, 248, 248);
+                }
+
+                .lineColor{
+                    width: 0%;
+                    height: 100%;
                     background: rgb(124, 9, 9);
-                    position: absolute;
-                    top: 0;
-                    left: 0;
+                    &:hover{
+                        cursor: pointer;
+                    }
                 }
 
                 #durationTime {
@@ -811,15 +819,19 @@ body::-webkit-scrollbar-thumb {
     }
 
     #playlist {
-        display: none;
+        // display: none;
+        z-index: -1;
+        opacity: 0;
         background: rgb(56, 56, 56);
         height: 400px;
         overflow-y: scroll;
         position: fixed;
         left: 0;
-        top: 58px;
+        top: 0px;
         height: 100%;
         width: 100%;
+        transition: all 0.6s ease-out;
+
 
         &::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -845,6 +857,7 @@ body::-webkit-scrollbar-thumb {
             color: #fff;
             border-bottom: 1px solid rgba(221, 221, 221, 0.185);
             transition: all 0.3s ease-in-out;
+            position: relative;
 
             .number {
                 flex: 1;
@@ -880,10 +893,22 @@ body::-webkit-scrollbar-thumb {
                 color: rgb(192, 57, 57);
                 cursor: pointer;
             }
+
+            &:after{
+                // contain: "";
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+            }
         }
 
         .active {
             background: #0b0b0b57;
+            color: #e27070;
         }
 
         li {
@@ -1014,6 +1039,22 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+body.showPlayList{
+    overflow: hidden;
+    #nav{
+        display: none;
+    }
+    #player #playlist{
+        opacity: 1;
+        z-index: 111;
+    }
+    
+}
+@media all and (max-width: 799px) {
+    #nav{
+        background: rgb(51, 51, 51);
+    }
+}
 @media all and (min-width: 800px) {
     body {
         padding: 0;
@@ -1029,13 +1070,19 @@ body::-webkit-scrollbar-thumb {
         position: fixed;
         z-index: 100;
         width: 100%;
-        background: linear-gradient(to top right, rgba(0, 0, 0, 0.9), rgba(106, 106, 106, 0.68));
+        box-shadow: none;
+        background: transparent;
+        &.backgroundOn{
+            background-color: rgba(51, 51, 51, 0.9);
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+        }
 
         .mainLogo {
-            flex: 2;
+            white-space: nowrap;
             font-size: 16px;
             position: relative;
             top: -4px;
+            font-weight: bold;
         }
 
         .hamburger-menu {
@@ -1044,18 +1091,19 @@ body::-webkit-scrollbar-thumb {
 
         .navBox {
             display: flex;
-            flex: 7;
             flex-direction: row;
             justify-content: flex-end;
             position: static;
             background: none;
-            transform: translateX(0);
+            transform: translateY(0);
             height: auto;
             opacity: 1;
+            padding: 15px 20px;
 
             a {
-                font-size: 12px;
-
+                font-size: 14px;
+                white-space: nowrap;
+                
                 &:hover {
                     color: rgb(25, 86, 177);
                     background: none;
@@ -1302,7 +1350,8 @@ body::-webkit-scrollbar-thumb {
         #playlist {
             width: 350px;
             position: static;
-            display: block;
+            opacity: 1;
+            z-index: 111;
         }
     }
 
@@ -1350,6 +1399,7 @@ body::-webkit-scrollbar-thumb {
     #contact {
         padding: 50px 20px 100px 20px;
         background-position: center center;
+        background-size: 100%;
     }
 
     #friends {

@@ -170,16 +170,18 @@ body::-webkit-scrollbar-thumb {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #333;
+  background-color: rgba(51, 51, 51, 0);
   -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   top: -1px;
   position: fixed;
   width: 100%;
-  z-index: 100; }
+  z-index: 100;
+  -webkit-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out; }
   #nav.showNavBox .navBox {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
     opacity: 1; }
   #nav.showNavBox .hamburger-menu span:nth-child(1) {
     top: 18px;
@@ -198,15 +200,16 @@ body::-webkit-scrollbar-thumb {
   #nav .mainLogo {
     font-size: 20px;
     padding: 20px;
-    color: #fff; }
+    color: #fff;
+    text-shadow: 2px 2px #000; }
   #nav .hamburger-menu {
     width: 40px;
     height: 40px;
     position: absolute;
     top: 7px;
     right: 20px;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg) scale(0.75);
+    transform: rotate(0deg) scale(0.75);
     -webkit-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer; }
@@ -233,8 +236,8 @@ body::-webkit-scrollbar-thumb {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
+    -webkit-transform: translateY(-150%);
+    transform: translateY(-150%);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -556,13 +559,16 @@ body::-webkit-scrollbar-thumb {
         margin: 45px auto 10px;
         background: white;
         position: relative; }
-        #player #mainPanel #progresBar #lineTime #lineColor {
-          width: 0%;
+        #player #mainPanel #progresBar #lineTime .lineColorBox {
+          width: 100%;
           height: 7px;
-          background: #7c0909;
-          position: absolute;
-          top: 0;
-          left: 0; }
+          background: #f8f8f8; }
+        #player #mainPanel #progresBar #lineTime .lineColor {
+          width: 0%;
+          height: 100%;
+          background: #7c0909; }
+          #player #mainPanel #progresBar #lineTime .lineColor:hover {
+            cursor: pointer; }
         #player #mainPanel #progresBar #lineTime #durationTime {
           position: absolute;
           left: 0%;
@@ -642,15 +648,18 @@ body::-webkit-scrollbar-thumb {
           z-index: 10;
           border-radius: 3px; }
   #player #playlist {
-    display: none;
+    z-index: -1;
+    opacity: 0;
     background: #383838;
     height: 400px;
     overflow-y: scroll;
     position: fixed;
     left: 0;
-    top: 58px;
+    top: 0px;
     height: 100%;
-    width: 100%; }
+    width: 100%;
+    -webkit-transition: all 0.6s ease-out;
+    transition: all 0.6s ease-out; }
     #player #playlist::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       border-radius: 10px;
@@ -675,7 +684,8 @@ body::-webkit-scrollbar-thumb {
       color: #fff;
       border-bottom: 1px solid rgba(221, 221, 221, 0.185);
       -webkit-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out; }
+      transition: all 0.3s ease-in-out;
+      position: relative; }
       #player #playlist .song .number {
         -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -703,8 +713,17 @@ body::-webkit-scrollbar-thumb {
       #player #playlist .song:hover:not(.active) {
         color: #c03939;
         cursor: pointer; }
+      #player #playlist .song:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10; }
     #player #playlist .active {
-      background: #0b0b0b57; }
+      background: #0b0b0b57;
+      color: #e27070; }
     #player #playlist li {
       text-align: center; }
 
@@ -808,6 +827,18 @@ body::-webkit-scrollbar-thumb {
     #footer .author a:hover {
       color: #b81f1f; }
 
+body.showPlayList {
+  overflow: hidden; }
+  body.showPlayList #nav {
+    display: none; }
+  body.showPlayList #player #playlist {
+    opacity: 1;
+    z-index: 111; }
+
+@media all and (max-width: 799px) {
+  #nav {
+    background: #333333; } }
+
 @media all and (min-width: 800px) {
   body {
     padding: 0; }
@@ -824,24 +855,25 @@ body::-webkit-scrollbar-thumb {
     position: fixed;
     z-index: 100;
     width: 100%;
-    background: -webkit-gradient(linear, left bottom, right top, from(rgba(0, 0, 0, 0.9)), to(rgba(106, 106, 106, 0.68)));
-    background: linear-gradient(to top right, rgba(0, 0, 0, 0.9), rgba(106, 106, 106, 0.68)); }
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: transparent; }
+    #nav.backgroundOn {
+      background-color: rgba(51, 51, 51, 0.9);
+      -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
     #nav .mainLogo {
-      -webkit-box-flex: 2;
-      -ms-flex: 2;
-      flex: 2;
+      white-space: nowrap;
       font-size: 16px;
       position: relative;
-      top: -4px; }
+      top: -4px;
+      font-weight: bold; }
     #nav .hamburger-menu {
       display: none; }
     #nav .navBox {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-flex: 7;
-      -ms-flex: 7;
-      flex: 7;
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -851,12 +883,14 @@ body::-webkit-scrollbar-thumb {
       justify-content: flex-end;
       position: static;
       background: none;
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
       height: auto;
-      opacity: 1; }
+      opacity: 1;
+      padding: 15px 20px; }
       #nav .navBox a {
-        font-size: 12px; }
+        font-size: 14px;
+        white-space: nowrap; }
         #nav .navBox a:hover {
           color: #1956b1;
           background: none;
@@ -1038,7 +1072,8 @@ body::-webkit-scrollbar-thumb {
     #player #playlist {
       width: 350px;
       position: static;
-      display: block; }
+      opacity: 1;
+      z-index: 111; }
   #car {
     padding: 50px 20px 100px 20px; }
     #car #carCaption {
@@ -1076,7 +1111,8 @@ body::-webkit-scrollbar-thumb {
             transform: translateX(0); }
   #contact {
     padding: 50px 20px 100px 20px;
-    background-position: center center; }
+    background-position: center center;
+    background-size: 100%; }
   #friends .footerBox a {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; }
